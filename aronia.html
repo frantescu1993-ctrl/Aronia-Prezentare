@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aronia - Beneficii și Produse | Superalimentul Natural</title>
+    <style>
+        :root {
+            --dark-purple: #2d1b3d;
+            --medium-purple: #4a235a;
+            --berry: #5c1a3a;
+            --accent: #8e2d5c;
+            --light-accent: #c44d84;
+            --gold: #c9a84c;
+            --gold-light: #e0c978;
+            --cream: #fdf6f0;
+            --white: #ffffff;
+            --gray-light: #f5f0eb;
+            --text: #3a2a3a;
+            --text-light: #6b5b6b;
+            --shadow: 0 8px 32px rgba(45, 27, 61, 0.12);
+            --shadow-hover: 0 16px 40px rgba(45, 27, 61, 0.2);
+            --radius: 20px;
+            --radius-sm: 12px;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAVIGATION ─────────────────────── */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(142, 45, 92, 0.1);
+            transition: var(--transition);
+            padding: 0 2rem;
+        }
+        .navbar.scrolled {
+            box-shadow: 0 4px 24px rgba(45, 27, 61, 0.1);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--dark-purple);
+            letter-spacing: -0.5px;
+        }
+        .nav-logo .berry-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #5c1a3a, #8e2d5c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(92, 26, 58, 0.4);
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.55rem 1.1rem;
+            border-radius: 50px;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+            background: rgba(142, 45, 92, 0.07);
+        }
+        .nav-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            padding: 0.6rem 1.5rem !important;
+            box-shadow: 0 4px 14px rgba(142, 45, 92, 0.35);
+        }
+        .nav-cta:hover {
+            background: #7a2650 !important;
+            color: #fff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(142, 45, 92, 0.45);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--dark-purple);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* ── HERO ──────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(170deg, #fdf6f0 0%, #f8ecf2 30%, #f0dce6 60%, #fdf6f0 100%);
+            padding: 6rem 2rem 4rem;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(142, 45, 92, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -8%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(142, 45, 92, 0.1);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.3rem;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(142, 45, 92, 0.2);
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 900;
+            color: var(--dark-purple);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #8e2d5c, #5c1a3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 500;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            letter-spacing: -0.2px;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(142, 45, 92, 0.35);
+        }
+        .btn-primary:hover {
+            background: #7a2650;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(142, 45, 92, 0.5);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .hero-berries {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            animation: bounce 2s infinite;
+            opacity: 0.6;
+            z-index: 2;
+        }
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-18px);
+            }
+        }
+
+        /* ── SECTION STYLES ────────────────── */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .section-tag {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--dark-purple);
+            margin-bottom: 0.8rem;
+        }
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* ── DESPRE ARONIA ─────────────────── */
+        #despre {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 4rem 3rem;
+            box-shadow: var(--shadow);
+            margin-top: -3rem;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .about-image {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #e8d5e0, #f5e8ef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: var(--shadow);
+        }
+        .about-text h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--dark-purple);
+            margin-bottom: 1rem;
+        }
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(142, 45, 92, 0.06), rgba(201, 168, 76, 0.08));
+            border-left: 4px solid var(--accent);
+            padding: 1.2rem 1.5rem;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin: 1.5rem 0;
+            font-weight: 600;
+            color: var(--dark-purple);
+        }
+
+        /* ── BENEFICII ─────────────────────── */
+        #beneficii {
+            background: transparent;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+        .benefit-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem 1.8rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+        .benefit-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(142, 45, 92, 0.15);
+        }
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--light-accent));
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        .benefit-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            background: rgba(142, 45, 92, 0.08);
+        }
+        .benefit-card h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dark-purple);
+            margin-bottom: 0.6rem;
+        }
+        .benefit-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ── PRODUSE ───────────────────────── */
+        #produse {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 4rem 3rem;
+            box-shadow: var(--shadow);
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.8rem;
+        }
+        .product-card {
+            background: var(--gray-light);
+            border-radius: var(--radius);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+        .product-card:hover {
+            background: #fff;
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(142, 45, 92, 0.2);
+            transform: translateY(-4px);
+        }
+        .product-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+            transition: var(--transition);
+        }
+        .product-card:hover .product-emoji {
+            transform: scale(1.1);
+        }
+        .product-card h3 {
+            font-weight: 800;
+            color: var(--dark-purple);
+            margin-bottom: 0.4rem;
+        }
+        .product-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .product-price {
+            display: inline-block;
+            margin-top: 1rem;
+            background: var(--accent);
+            color: #fff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* ── NUTRIȚIE ──────────────────────── */
+        #nutritie {
+            background: transparent;
+        }
+        .nutrition-table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            background: var(--white);
+        }
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        .nutrition-table thead {
+            background: var(--dark-purple);
+            color: #fff;
+        }
+        .nutrition-table th {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .nutrition-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #eee;
+            font-weight: 500;
+        }
+        .nutrition-table tbody tr:hover {
+            background: rgba(142, 45, 92, 0.03);
+        }
+        .nutrition-highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ── CONTACT / FOOTER ──────────────── */
+        #contact {
+            background: var(--dark-purple);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 4rem 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        #contact .section-title {
+            color: #fff;
+        }
+        #contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1rem;
+        }
+        .contact-item span {
+            font-size: 1.5rem;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        .footer-bottom a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ── SCROLL TO TOP ─────────────────── */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(142, 45, 92, 0.4);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .scroll-top:hover {
+            background: #7a2650;
+            transform: translateY(-4px);
+        }
+
+        /* ── ANIMATIONS ────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── RESPONSIVE ────────────────────── */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image {
+                aspect-ratio: 2/1;
+                font-size: 5rem;
+            }
+            #despre,
+            #produse {
+                padding: 2.5rem 1.5rem;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: #fff;
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 0.5rem;
+                box-shadow: -8px 0 30px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 999;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .benefits-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            #despre,
+            #produse,
+            #contact {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════ NAVIGATION ═══════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <div class="berry-icon">🫐</div>
+                Aronia
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#despre" class="active">Despre</a></li>
+                <li><a href="#beneficii">Beneficii</a></li>
+                <li><a href="#produse">Produse</a></li>
+                <li><a href="#nutritie">Nutriție</a></li>
+                <li><a href="#contact" class="nav-cta">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <header class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🌟 Superaliment Natural</div>
+            <h1>Descoperă puterea <span>Aroniei</span></h1>
+            <p class="hero-subtitle">
+                Un adevărat dar al naturii — aronia este fructul cu cel mai ridicat conținut de antioxidanți,
+                vitamine și minerale esențiale pentru sănătatea ta.
+            </p>
+            <div class="hero-buttons">
+                <a href="#beneficii" class="btn btn-primary">🔬 Vezi Beneficiile</a>
+                <a href="#produse" class="btn btn-outline">🛒 Produse din Aronia</a>
+            </div>
+        </div>
+        <div class="hero-berries">🫐 🫐 🫐</div>
+    </header>
+
+    <!-- ═══════════ DESPRE ARONIA ═══════════ -->
+    <section id="despre" class="reveal">
+        <div class="section-header">
+            <span class="section-tag">🌿 Cunoaște</span>
+            <h2 class="section-title">Ce este Aronia?</h2>
+            <p class="section-subtitle">O boabă mică, cu puteri extraordinare</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-image" aria-label="Ilustrație ciorchine de aronia">🫐</div>
+            <div class="about-text">
+                <h3>Aronia melanocarpa — „Scutul Natural"</h3>
+                <p>
+                    <strong>Aronia</strong>, cunoscută și sub numele de <em>scoruș negru</em>, este un arbust originar
+                    din America de Nord, cultivat astăzi pe scară largă în Europa de Est, inclusiv în România.
+                    Fructele sale — mici, de culoare violet-închis — sunt recunoscute la nivel mondial drept
+                    unele dintre cele mai puternice surse naturale de antioxidanți.
+                </p>
+                <div class="highlight-box">
+                    💡 <strong>Știai?</strong> Aronia conține de <strong>3 ori mai mulți antioxidanți</strong>
+                    decât afinele și de <strong>10 ori mai mult</strong> decât merișoarele!
+                </div>
+                <p>
+                    Datorită profilului său nutrițional impresionant, aronia este folosită atât în stare proaspătă,
+                    cât și procesată sub formă de sucuri, siropuri, dulcețuri, pudră sau suplimente alimentare.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ BENEFICII ═══════════ -->
+    <section id="beneficii" class="reveal">
+        <div class="section-header">
+            <span class="section-tag">💪 Sănătate</span>
+            <h2 class="section-title">Beneficiile Consumului de Aronia</h2>
+            <p class="section-subtitle">Motivul pentru care aronia este numită „medicamentul naturii"</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
+                <h3>Imunitate Puternică</h3>
+                <p>Conținutul ridicat de vitamina C și polifenoli întărește sistemul imunitar, ajutând organismul să
+                    lupte împotriva infecțiilor.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">❤️</div>
+                <h3>Sănătatea Inimii</h3>
+                <p>Antioxidanții din aronia reduc tensiunea arterială, scad colesterolul „rău" (LDL) și îmbunătățesc
+                    circulația sangvină.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🧠</div>
+                <h3>Funcția Cognitivă</h3>
+                <p>Protejează celulele neuronale de stresul oxidativ, contribuind la menținerea memoriei și a clarității
+                    mentale.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🩸</div>
+                <h3>Reglarea Glicemiei</h3>
+                <p>Aronia ajută la stabilizarea nivelului de zahăr din sânge, fiind recomandată persoanelor cu diabet de
+                    tip 2.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">✨</div>
+                <h3>Piele Tânără</h3>
+                <p>Antocianinele combat radicalii liberi, încetinind îmbătrânirea prematură a pielii și oferindu-i
+                    elasticitate.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🦠</div>
+                <h3>Proprietăți Antiinflamatorii</h3>
+                <p>Reduce inflamațiile cronice din organism, fiind utilă în afecțiuni precum artrita sau bolile
+                    autoimune.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">👁️</div>
+                <h3>Vedere Sănătoasă</h3>
+                <p>Bogată în antocianine, aronia protejează retina și poate reduce riscul degenerescenței maculare.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🏃</div>
+                <h3>Energie & Recuperare</h3>
+                <p>Ideală pentru sportivi — accelerează recuperarea musculară după efort intens și combate oboseala.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ PRODUSE ═══════════ -->
+    <section id="produse" class="reveal">
+        <div class="section-header">
+            <span class="section-tag">🛍️ Gama Noastră</span>
+            <h2 class="section-title">Produse din Aronia</h2>
+            <p class="section-subtitle">100% naturale, fără aditivi sau conservanți artificiali</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <span class="product-emoji">🧃</span>
+                <h3>Suc de Aronia</h3>
+                <p>Presat la rece, păstrează toate vitaminele. Ideal diluat cu apă sau în smoothie-uri.</p>
+                <span class="product-price">500 ml</span>
+            </div>
+            <div class="product-card">
+                <span class="product-emoji">🍯</span>
+                <h3>Sirop de Aronia</h3>
+                <p>Îndulcit natural, perfect pentru limonade, ceaiuri sau deserturi rafinate.</p>
+                <span class="product-price">350 ml</span>
+            </div>
+            <div class="product-card">
+                <span class="product-emoji">🍓</span>
+                <h3>Dulceață de Aronia</h3>
+                <p>Fără zahăr adăugat — doar fructe și îndulcitor natural. Delicioasă pe pâine prăjită.</p>
+                <span class="product-price">300 g</span>
+            </div>
+            <div class="product-card">
+                <span class="product-emoji">🫗</span>
+                <h3>Pudră de Aronia</h3>
+                <p>Fructe liofilizate și măcinate fin. Se adaugă în iaurt, cereale sau shake-uri proteice.</p>
+                <span class="product-price">200 g</span>
+            </div>
+            <div class="product-card">
+                <span class="product-emoji">🍷</span>
+                <h3>Vin de Aronia</h3>
+                <p>Fermentat natural, cu o aromă bogată și taninuri fine. Un vin aparte pentru cunoscători.</p>
+                <span class="product-price">750 ml</span>
+            </div>
+            <div class="product-card">
+                <span class="product-emoji">💊</span>
+                <h3>Capsule cu Aronia</h3>
+                <p>Extract concentrat pentru un aport zilnic rapid și convenabil de antioxidanți.</p>
+                <span class="product-price">60 capsule</span>
+            </div>
+            <div class="product-card">
+                <span class="product-emoji">🍵</span>
+                <h3>Ceai din Fructe de Aronia</h3>
+                <p>Fructe uscate întregi, ideale pentru infuzii calde, pline de savoare și beneficii.</p>
+                <span class="product-price">150 g</span>
+            </div>
+            <div class="product-card">
+                <span class="product-emoji">🧴</span>
+                <h3>Ulei din Semințe de Aronia</h3>
+                <p>Presat la rece, bogat în acizi grași esențiali. Excelent pentru piele și păr.</p>
+                <span class="product-price">100 ml</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ NUTRIȚIE ═══════════ -->
+    <section id="nutritie" class="reveal">
+        <div class="section-header">
+            <span class="section-tag">📊 Valori</span>
+            <h2 class="section-title">Profil Nutrițional</h2>
+            <p class="section-subtitle">Valori medii per 100 g de fructe proaspete de aronia</p>
+        </div>
+        <div class="nutrition-table-wrap">
+            <table class="nutrition-table">
+                <thead>
+                    <tr>
+                        <th>Nutrient</th>
+                        <th>Valoare</th>
+                        <th>% DZR*</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Calorii</td>
+                        <td>47 kcal</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohidrați</td>
+                        <td>9.6 g</td>
+                        <td>3%</td>
+                    </tr>
+                    <tr>
+                        <td>Fibre</td>
+                        <td class="nutrition-highlight">5.3 g</td>
+                        <td class="nutrition-highlight">21%</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina C</td>
+                        <td class="nutrition-highlight">21 mg</td>
+                        <td class="nutrition-highlight">35%</td>
+                    </tr>
+                    <tr>
+                        <td>Vitamina K</td>
+                        <td>29.3 µg</td>
+                        <td>37%</td>
+                    </tr>
+                    <tr>
+                        <td>Mangan</td>
+                        <td class="nutrition-highlight">0.6 mg</td>
+                        <td class="nutrition-highlight">30%</td>
+                    </tr>
+                    <tr>
+                        <td>Antocianine</td>
+                        <td class="nutrition-highlight">1.480 mg</td>
+                        <td class="nutrition-highlight">★★★</td>
+                    </tr>
+                    <tr>
+                        <td>Polifenoli totali</td>
+                        <td class="nutrition-highlight">2.560 mg</td>
+                        <td class="nutrition-highlight">★★★</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="text-align:center; margin-top:1rem; font-size:0.85rem; color:var(--text-light);">
+            *DZR = Doza Zilnică Recomandată. ★★★ = Valoare excepțional de ridicată.
+        </p>
+    </section>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section id="contact" class="reveal">
+        <div class="section-header">
+            <span class="section-tag">📬 Rămâi Conectat</span>
+            <h2 class="section-title">Vrei să afli mai multe?</h2>
+            <p class="section-subtitle">Contactează-ne pentru comenzi, colaborări sau informații</p>
+        </div>
+        <div class="contact-info">
+            <div class="contact-item"><span>📧</span> office@aronia-natur.ro</div>
+            <div class="contact-item"><span>📞</span> +40 721 234 567</div>
+            <div class="contact-item"><span>📍</span> România, jud. Cluj</div>
+        </div>
+        <a href="#" class="btn btn-primary" style="background:#fff; color:var(--accent); box-shadow:0 8px 24px rgba(0,0,0,0.2);">
+            ✉️ Trimite-ne un Mesaj
+        </a>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <div class="footer-bottom">
+        <p>© 2026 <a href="#">Aronia Natur</a> — Toate drepturile rezervate.
+            <br>Creat cu ❤️ pentru iubitorii de natură și sănătate.
+        </p>
+    </div>
+
+    <!-- ═══════════ SCROLL TO TOP ═══════════ -->
+    <button class="scroll-top" id="scrollTop" title="Înapoi sus">↑</button>
+
+    <!-- ═══════════ SCRIPTS ═══════════ -->
+    <script>
+        // ── Mobile menu toggle ──
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const allNavLinks = navLinks.querySelectorAll('a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        allNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ── Navbar scroll effect ──
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Active nav link based on scroll position
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            allNavLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href') === '#' + current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+
+        // ── Scroll to top button ──
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ── Reveal animations on scroll ──
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
