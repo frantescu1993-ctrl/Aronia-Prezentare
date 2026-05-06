@@ -1,1243 +1,1076 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aronia Natur — Superalimentul Naturii</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --ink: #1a0e26;
-            --plum: #3b1050;
-            --berry: #6b1a44;
-            --rose: #a63360;
-            --blush: #d4637a;
-            --gold: #c9973c;
-            --gold-lt: #e8c87c;
-            --cream: #faf5ef;
-            --parchment: #f2ebe0;
-            --fog: #e8dfd3;
-            --white: #ffffff;
-            --text: #2a1a2e;
-            --muted: #7a6580;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Aronia Natur — superaliment natural cu cei mai mulți antioxidanți. Sucuri, siropuri, dulcețuri, pudră și capsule 100% naturale din România.">
+<title>Aronia Natur — Superalimentul Naturii</title>
 
-            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+<!-- Preload critical fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,500;9..40,600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,500;9..40,600&display=swap" rel="stylesheet">
 
-            --r-lg: 24px;
-            --r-md: 16px;
-            --r-sm: 10px;
-        }
+<style>
+/* ═══════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════ */
+:root{
+  --ink:#1a0e26;--plum:#3b1050;--berry:#6b1a44;--rose:#a63360;
+  --blush:#d4637a;--gold:#c9973c;--gold-lt:#e8c87c;
+  --cream:#faf5ef;--parchment:#f2ebe0;--fog:#e8dfd3;--white:#fff;
+  --text:#2a1a2e;--muted:#7a6580;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --r:24px;--rm:16px;--rs:10px;
+  --sh:0 8px 32px rgba(26,14,38,.1);
+  --shh:0 24px 56px rgba(107,26,68,.16);
+}
 
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+/* ═══════════════════════════════
+   RESET + BASE
+═══════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:var(--cream);color:var(--text);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  line-height:1.7;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
+/* ═══════════════════════════════
+   BACKGROUND SYSTEM
+   — fixed botanical SVG layer
+   — gradient overlay
+   — noise grain
+═══════════════════════════════ */
+.bg-botanical{
+  position:fixed;inset:0;z-index:-4;
+  pointer-events:none;overflow:hidden;
+}
+.bg-gradient{
+  position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(ellipse 90% 60% at 72% 18%,rgba(107,26,68,.11) 0%,transparent 60%),
+    radial-gradient(ellipse 65% 50% at 12% 80%,rgba(201,151,60,.09) 0%,transparent 55%),
+    radial-gradient(ellipse 50% 70% at 50% 50%,rgba(255,255,255,.6) 0%,transparent 80%),
+    linear-gradient(155deg,#faf5ef 0%,#f4ead8 45%,#ece0d0 100%);
+  pointer-events:none;
+}
+/* Grain overlay via pseudo */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:9997;
+  pointer-events:none;
+  opacity:.28;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='.06'/%3E%3C/svg%3E");
+  background-size:300px 300px;
+}
 
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--cream);
-            color: var(--text);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
+/* ═══════════════════════════════
+   NAVBAR
+═══════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 2rem;
+  will-change:background-color;
+  transition:background .4s var(--ease),box-shadow .4s var(--ease),border-color .4s;
+}
+.nav.on{
+  background:rgba(250,245,239,.93);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border-bottom:1px solid rgba(107,26,68,.1);
+  box-shadow:0 2px 32px rgba(26,14,38,.07);
+}
+.nav-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-box{
+  width:42px;height:42px;
+  background:linear-gradient(145deg,var(--berry),var(--plum));
+  border-radius:13px;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;
+  box-shadow:0 5px 18px rgba(107,26,68,.38),inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform .3s var(--ease);contain:layout style;
+}
+.logo-box:hover{transform:rotate(-6deg) scale(1.06)}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:700;letter-spacing:-.4px;color:var(--ink)}
+.logo-name em{font-style:italic;color:var(--berry)}
+.nav-list{display:flex;align-items:center;gap:.15rem}
+.nav-list a{font-size:.87rem;font-weight:500;color:var(--muted);padding:.48rem .95rem;border-radius:50px;transition:color .2s,background .2s}
+.nav-list a:hover,.nav-list a.active{color:var(--berry);background:rgba(107,26,68,.07)}
+.nav-cta{background:var(--berry)!important;color:#fff!important;padding:.52rem 1.35rem!important;box-shadow:0 4px 14px rgba(107,26,68,.3)!important;transition:background .25s,transform .25s,box-shadow .25s!important}
+.nav-cta:hover{background:var(--plum)!important;transform:translateY(-2px)!important;box-shadow:0 8px 22px rgba(107,26,68,.42)!important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:7px;z-index:1001}
+.burger span{width:25px;height:2px;background:var(--ink);border-radius:2px;transition:transform .3s var(--ease),opacity .3s}
+.burger.on span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.burger.on span:nth-child(2){opacity:0;transform:translateX(-8px)}
+.burger.on span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
 
-        /* ─── NOISE TEXTURE OVERLAY ─── */
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.35;
-        }
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:3.5rem;
+  max-width:1280px;margin:0 auto;
+  padding:8rem 2rem 4rem;
+  position:relative;
+}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem}
+.hero-eyebrow::before{content:'';width:30px;height:2px;background:var(--gold);display:block;flex-shrink:0}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.4rem);font-weight:700;color:var(--ink);line-height:1.04;letter-spacing:-1.5px;margin-bottom:1.3rem}
+.hero h1 .hi{color:var(--berry);font-style:italic}
+.hero-sub{font-size:1.03rem;color:var(--muted);line-height:1.82;max-width:430px;margin-bottom:2.4rem;font-weight:300}
+.btns{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:.82rem 1.75rem;border-radius:50px;
+  font-family:inherit;font-weight:600;font-size:.88rem;
+  border:none;cursor:pointer;
+  transition:background .25s,transform .28s var(--ease),box-shadow .28s;
+  text-decoration:none;
+  contain:layout style;
+}
+.btn-p{background:var(--berry);color:#fff;box-shadow:0 8px 26px rgba(107,26,68,.3)}
+.btn-p:hover{background:var(--plum);transform:translateY(-3px);box-shadow:0 16px 34px rgba(107,26,68,.42)}
+.btn-g{background:transparent;color:var(--berry);border:1.5px solid rgba(107,26,68,.28)}
+.btn-g:hover{background:rgba(107,26,68,.06);border-color:var(--berry);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:2.4rem;margin-top:2.8rem;padding-top:2.4rem;border-top:1px solid rgba(107,26,68,.1)}
+.sn{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--berry);line-height:1}
+.sl{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
 
-        /* ─── NAVIGATION ─── */
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 0 2.5rem;
-            transition: all 0.5s var(--ease-out);
-        }
-        .navbar.scrolled {
-            background: rgba(250, 245, 239, 0.88);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(107, 26, 68, 0.12);
-            box-shadow: 0 2px 40px rgba(26, 14, 38, 0.08);
-        }
-        .nav-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 80px;
-        }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--ink);
-        }
-        .logo-mark {
-            width: 44px; height: 44px;
-            background: linear-gradient(145deg, var(--berry), var(--plum));
-            border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem;
-            box-shadow: 0 6px 20px rgba(107, 26, 68, 0.35), inset 0 1px 0 rgba(255,255,255,0.15);
-            transition: transform 0.3s var(--ease-out);
-        }
-        .logo-mark:hover { transform: rotate(-5deg) scale(1.05); }
-        .logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.7rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--ink);
-        }
-        .logo-text em {
-            font-style: italic;
-            color: var(--berry);
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            align-items: center;
-            gap: 0.2rem;
-        }
-        .nav-links a {
-            font-size: 0.88rem;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            color: var(--muted);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            transition: all 0.25s;
-        }
-        .nav-links a:hover { color: var(--berry); background: rgba(107,26,68,0.06); }
-        .nav-links .nav-cta {
-            background: var(--berry);
-            color: #fff !important;
-            padding: 0.55rem 1.4rem;
-            box-shadow: 0 4px 16px rgba(107,26,68,0.3);
-            letter-spacing: 0.2px;
-        }
-        .nav-links .nav-cta:hover {
-            background: var(--plum) !important;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(107,26,68,0.4);
-        }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            z-index: 1001;
-        }
-        .hamburger span {
-            width: 26px; height: 2px;
-            background: var(--ink);
-            border-radius: 2px;
-            transition: all 0.3s var(--ease-out);
-        }
-        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
-        .hamburger.open span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
-        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+/* hero visual */
+.hero-vis{display:flex;align-items:center;justify-content:center;position:relative}
+.orb{
+  width:min(480px,100%);aspect-ratio:1;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 36% 36%,rgba(166,51,96,.18) 0%,rgba(107,26,68,.08) 42%,transparent 70%);
+  position:relative;
+}
+.orb::before{content:'';position:absolute;inset:9%;border-radius:50%;border:1px solid rgba(107,26,68,.1);animation:spin 22s linear infinite}
+.orb::after{content:'';position:absolute;inset:22%;border-radius:50%;border:1px dashed rgba(201,151,60,.11);animation:spin 36s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb-emoji{font-size:clamp(5.5rem,11vw,9.5rem);animation:bob 6.5s ease-in-out infinite;filter:drop-shadow(0 28px 52px rgba(107,26,68,.26));position:relative;z-index:1}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-18px) rotate(3deg)}}
+.float-tags{position:absolute;inset:0;pointer-events:none}
+.ftag{
+  position:absolute;background:var(--white);border-radius:var(--rm);
+  padding:.7rem 1rem;
+  box-shadow:0 8px 28px rgba(26,14,38,.1),inset 0 1px 0 rgba(255,255,255,.8);
+  font-size:.78rem;font-weight:600;color:var(--text);white-space:nowrap;
+  animation:flt 5s ease-in-out infinite;
+  will-change:transform;
+}
+.ftag:nth-child(1){top:13%;left:-3%;animation-delay:0s}
+.ftag:nth-child(2){top:61%;right:-5%;animation-delay:1.6s}
+.ftag:nth-child(3){bottom:13%;left:3%;animation-delay:3.1s}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-        /* ─── HERO ─── */
-        .hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 9rem 2.5rem 5rem;
-            gap: 4rem;
-            position: relative;
-        }
-        .hero-bg {
-            position: fixed;
-            inset: 0;
-            z-index: -2;
-            background:
-                radial-gradient(ellipse 80% 60% at 65% 30%, rgba(107,26,68,0.1) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 20% 70%, rgba(201,151,60,0.07) 0%, transparent 60%),
-                var(--cream);
-        }
-        .hero-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-        }
-        .hero-label::before {
-            content: '';
-            display: block;
-            width: 32px; height: 2px;
-            background: var(--gold);
-        }
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3.2rem, 5.5vw, 5.5rem);
-            font-weight: 700;
-            color: var(--ink);
-            line-height: 1.05;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1.5px;
-        }
-        .hero h1 .accent {
-            color: var(--berry);
-            font-style: italic;
-        }
-        .hero-sub {
-            font-size: 1.05rem;
-            color: var(--muted);
-            line-height: 1.8;
-            max-width: 440px;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-        .hero-btns {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.85rem 1.8rem;
-            border-radius: 50px;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 0.2px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s var(--ease-out);
-        }
-        .btn-primary {
-            background: var(--berry);
-            color: #fff;
-            box-shadow: 0 8px 28px rgba(107,26,68,0.32);
-        }
-        .btn-primary:hover {
-            background: var(--plum);
-            transform: translateY(-3px);
-            box-shadow: 0 16px 36px rgba(107,26,68,0.42);
-        }
-        .btn-ghost {
-            background: transparent;
-            color: var(--berry);
-            border: 1.5px solid rgba(107,26,68,0.3);
-        }
-        .btn-ghost:hover {
-            background: rgba(107,26,68,0.06);
-            border-color: var(--berry);
-            transform: translateY(-2px);
-        }
-        .hero-stats {
-            display: flex;
-            gap: 2.5rem;
-            margin-top: 3rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(107,26,68,0.12);
-        }
-        .stat-item {}
-        .stat-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--berry);
-            line-height: 1;
-        }
-        .stat-label {
-            font-size: 0.78rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
-        }
+/* ═══════════════════════════════
+   LAYOUT UTILITIES
+═══════════════════════════════ */
+.wrap{max-width:1280px;margin:0 auto;padding:5.5rem 2rem}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.77rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--gold);display:block;flex-shrink:0}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.8vw,3.3rem);font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-1px}
+.sec-title em{color:var(--berry);font-style:italic}
+.sec-desc{color:var(--muted);font-size:.98rem;line-height:1.82;max-width:480px;margin-top:.75rem;font-weight:300}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--fog),transparent)}
 
-        /* ─── HERO VISUAL ─── */
-        .hero-visual {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-orb {
-            width: min(500px, 100%);
-            aspect-ratio: 1;
-            background: radial-gradient(circle at 35% 35%,
-                rgba(166,51,96,0.25) 0%,
-                rgba(107,26,68,0.15) 35%,
-                rgba(59,16,80,0.05) 65%,
-                transparent 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .hero-orb::before {
-            content: '';
-            position: absolute;
-            inset: 10%;
-            border-radius: 50%;
-            border: 1px solid rgba(107,26,68,0.12);
-            animation: spin-slow 20s linear infinite;
-        }
-        .hero-orb::after {
-            content: '';
-            position: absolute;
-            inset: 20%;
-            border-radius: 50%;
-            border: 1px dashed rgba(201,151,60,0.15);
-            animation: spin-slow 30s linear infinite reverse;
-        }
-        @keyframes spin-slow {
-            to { transform: rotate(360deg); }
-        }
-        .hero-berry-big {
-            font-size: clamp(6rem, 12vw, 11rem);
-            animation: float 6s ease-in-out infinite;
-            filter: drop-shadow(0 30px 60px rgba(107,26,68,0.3));
-            position: relative;
-            z-index: 1;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(-3deg); }
-            50% { transform: translateY(-20px) rotate(3deg); }
-        }
-        .hero-badges-floating {
-            position: absolute;
-            inset: 0;
-        }
-        .badge-float {
-            position: absolute;
-            background: var(--white);
-            border-radius: var(--r-md);
-            padding: 0.75rem 1.1rem;
-            box-shadow: 0 8px 32px rgba(26,14,38,0.12), 0 1px 0 rgba(255,255,255,0.8) inset;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text);
-            white-space: nowrap;
-            animation: badge-float 5s ease-in-out infinite;
-        }
-        .badge-float:nth-child(1) { top: 15%; left: 0; animation-delay: 0s; }
-        .badge-float:nth-child(2) { top: 60%; right: -5%; animation-delay: 1.5s; }
-        .badge-float:nth-child(3) { bottom: 15%; left: 5%; animation-delay: 3s; }
-        @keyframes badge-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-        .badge-icon { font-size: 1.1rem; margin-right: 6px; }
+/* ═══════════════════════════════
+   ABOUT
+═══════════════════════════════ */
+.about-sec{background:rgba(255,255,255,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--fog);border-bottom:1px solid var(--fog)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
+.about-img{
+  background:linear-gradient(145deg,#ead5e4,#f5e8f0);
+  border-radius:var(--r);aspect-ratio:4/5;
+  display:flex;align-items:center;justify-content:center;
+  font-size:7.5rem;
+  box-shadow:22px 22px 55px rgba(107,26,68,.11),-8px -8px 28px rgba(255,255,255,.75);
+  position:relative;overflow:hidden;
+}
+.about-img::before{content:'';position:absolute;top:-30%;left:-30%;width:80%;height:80%;background:radial-gradient(circle,rgba(255,255,255,.45),transparent);border-radius:50%}
+.about-tag{
+  position:absolute;bottom:-18px;right:-18px;
+  background:var(--berry);color:#fff;border-radius:var(--rm);
+  padding:1.1rem 1.4rem;
+  box-shadow:0 10px 28px rgba(107,26,68,.34);
+}
+.about-tag strong{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;display:block;line-height:1}
+.about-tag small{font-size:.73rem;opacity:.82;letter-spacing:1px}
+.about-text p{color:var(--muted);line-height:1.9;margin-bottom:.95rem;font-weight:300;font-size:.98rem}
+.callout{
+  background:linear-gradient(135deg,rgba(107,26,68,.05),rgba(201,151,60,.05));
+  border:1px solid rgba(107,26,68,.1);border-left:3px solid var(--berry);
+  border-radius:0 var(--rs) var(--rs) 0;
+  padding:1.1rem 1.35rem;margin:1.4rem 0;font-size:.93rem;color:var(--text);line-height:1.7;
+}
+.callout strong{color:var(--berry)}
 
-        /* ─── SECTIONS COMMON ─── */
-        .wrapper {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 6rem 2.5rem;
-        }
-        .section-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-        .section-eyebrow::before {
-            content: '';
-            width: 28px; height: 2px;
-            background: var(--gold);
-            display: block;
-        }
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.2rem, 4vw, 3.5rem);
-            font-weight: 700;
-            color: var(--ink);
-            line-height: 1.1;
-            letter-spacing: -1px;
-        }
-        .section-title em { color: var(--berry); font-style: italic; }
-        .section-desc {
-            color: var(--muted);
-            font-size: 1rem;
-            line-height: 1.8;
-            max-width: 500px;
-            margin-top: 0.8rem;
-            font-weight: 300;
-        }
+/* ═══════════════════════════════
+   BENEFITS
+═══════════════════════════════ */
+.ben-sec{background:rgba(242,235,224,.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.ben-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;gap:1.5rem;flex-wrap:wrap}
+.ben-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.bcard{
+  background:rgba(255,255,255,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-radius:var(--r);padding:1.9rem 1.7rem;
+  border:1px solid rgba(107,26,68,.06);
+  position:relative;overflow:hidden;
+  transition:transform .38s var(--ease),box-shadow .38s,border-color .38s;
+  contain:layout style;
+}
+.bcard:hover{transform:translateY(-7px);box-shadow:var(--shh);border-color:rgba(107,26,68,.15)}
+.bcard.feat{
+  background:linear-gradient(145deg,var(--berry),var(--plum));
+  grid-column:span 2;display:flex;align-items:center;gap:1.8rem;
+}
+.bcard.feat h3,.bcard.feat p{color:#fff}
+.bcard.feat p{opacity:.82}
+.bcard.feat .bicon{background:rgba(255,255,255,.14);font-size:2.8rem;width:60px;height:60px;flex-shrink:0}
+.bicon{width:50px;height:50px;background:rgba(107,26,68,.07);border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:1.55rem;margin-bottom:1.1rem;transition:transform .3s var(--ease)}
+.bcard:hover .bicon{transform:scale(1.1) rotate(-5deg)}
+.bcard h3{font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:700;color:var(--ink);margin-bottom:.45rem;letter-spacing:-.2px}
+.bcard p{font-size:.87rem;color:var(--muted);line-height:1.72;font-weight:300}
+.bnum{position:absolute;top:1rem;right:1.4rem;font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;color:rgba(107,26,68,.04);line-height:1;pointer-events:none;user-select:none}
+.bcard.feat .bnum{color:rgba(255,255,255,.06)}
 
-        /* ─── ABOUT ─── */
-        .about-section {
-            background: var(--white);
-            border-top: 1px solid var(--fog);
-            border-bottom: 1px solid var(--fog);
-        }
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: center;
-        }
-        .about-img-wrap {
-            position: relative;
-        }
-        .about-img-card {
-            background: linear-gradient(145deg, #ead5e4, #f5e8f0);
-            border-radius: var(--r-lg);
-            aspect-ratio: 4/5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            box-shadow: 24px 24px 60px rgba(107,26,68,0.12), -8px -8px 30px rgba(255,255,255,0.8);
-            position: relative;
-            overflow: hidden;
-        }
-        .about-img-card::before {
-            content: '';
-            position: absolute;
-            top: -30%; left: -30%;
-            width: 80%; height: 80%;
-            background: radial-gradient(circle, rgba(255,255,255,0.5), transparent);
-            border-radius: 50%;
-        }
-        .about-info-tag {
-            position: absolute;
-            bottom: -20px; right: -20px;
-            background: var(--berry);
-            color: #fff;
-            border-radius: var(--r-md);
-            padding: 1.2rem 1.5rem;
-            box-shadow: 0 12px 32px rgba(107,26,68,0.35);
-        }
-        .about-info-tag .big-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            display: block;
-            line-height: 1;
-        }
-        .about-info-tag .label {
-            font-size: 0.75rem;
-            opacity: 0.8;
-            letter-spacing: 1px;
-        }
-        .about-text p {
-            color: var(--muted);
-            line-height: 1.9;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            font-size: 1rem;
-        }
-        .callout {
-            background: linear-gradient(135deg, rgba(107,26,68,0.06), rgba(201,151,60,0.06));
-            border: 1px solid rgba(107,26,68,0.12);
-            border-left: 3px solid var(--berry);
-            border-radius: 0 var(--r-sm) var(--r-sm) 0;
-            padding: 1.2rem 1.4rem;
-            margin: 1.5rem 0;
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-        .callout strong { color: var(--berry); }
+/* ═══════════════════════════════
+   PRODUCTS
+═══════════════════════════════ */
+.prod-sec{background:rgba(255,255,255,.58);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border-top:1px solid var(--fog);border-bottom:1px solid var(--fog)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+.pcard{
+  border-radius:var(--r);padding:1.9rem 1.4rem;text-align:center;
+  background:rgba(242,235,224,.68);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid transparent;
+  transition:background .35s,border-color .35s,transform .38s var(--ease),box-shadow .38s;
+  cursor:pointer;position:relative;overflow:hidden;
+  contain:layout style;
+}
+.pcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--berry),var(--blush));transform:scaleX(0);transform-origin:left;transition:transform .38s var(--ease)}
+.pcard:hover::after{transform:scaleX(1)}
+.pcard:hover{background:rgba(255,255,255,.96);border-color:rgba(107,26,68,.13);transform:translateY(-6px);box-shadow:var(--shh)}
+.p-svg{width:105px;height:105px;margin:0 auto 1.1rem;transition:transform .38s var(--ease);filter:drop-shadow(0 7px 18px rgba(107,26,68,.18));will-change:transform}
+.pcard:hover .p-svg{transform:scale(1.1) rotate(-4deg)}
+.pcard h3{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.18rem;color:var(--ink);margin-bottom:.35rem;letter-spacing:-.15px}
+.pcard p{font-size:.81rem;color:var(--muted);line-height:1.62;font-weight:300;margin-bottom:.9rem}
+.ptag{display:inline-block;background:var(--berry);color:#fff;font-size:.77rem;font-weight:600;padding:.28rem .85rem;border-radius:50px}
 
-        /* ─── BENEFITS ─── */
-        .benefits-section { background: var(--parchment); }
-        .benefits-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 3.5rem;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: auto auto;
-            gap: 1.5rem;
-        }
-        .benefit-card {
-            background: var(--white);
-            border-radius: var(--r-lg);
-            padding: 2rem 1.8rem;
-            transition: all 0.4s var(--ease-out);
-            border: 1px solid rgba(107,26,68,0.06);
-            position: relative;
-            overflow: hidden;
-        }
-        .benefit-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 48px rgba(107,26,68,0.13);
-            border-color: rgba(107,26,68,0.15);
-        }
-        .benefit-card.featured {
-            background: linear-gradient(145deg, var(--berry), var(--plum));
-            color: #fff;
-            grid-column: span 2;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        .benefit-card.featured h3,
-        .benefit-card.featured p { color: #fff; }
-        .benefit-card.featured p { opacity: 0.8; }
-        .benefit-card.featured .b-icon { background: rgba(255,255,255,0.15); font-size: 3rem; }
-        .b-icon {
-            width: 52px; height: 52px;
-            background: rgba(107,26,68,0.07);
-            border-radius: var(--r-sm);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            transition: transform 0.3s var(--ease-out);
-        }
-        .benefit-card:hover .b-icon { transform: scale(1.1) rotate(-5deg); }
-        .benefit-card.featured:hover .b-icon { transform: scale(1.1) rotate(5deg); }
-        .benefit-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.3px;
-        }
-        .benefit-card p {
-            font-size: 0.88rem;
-            color: var(--muted);
-            line-height: 1.7;
-            font-weight: 300;
-        }
-        .benefit-num {
-            position: absolute;
-            top: 1.2rem; right: 1.5rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: rgba(107,26,68,0.05);
-            line-height: 1;
-            pointer-events: none;
-        }
-        .benefit-card.featured .benefit-num { color: rgba(255,255,255,0.08); }
+/* ═══════════════════════════════
+   NUTRITION
+═══════════════════════════════ */
+.nut-sec{background:var(--ink)}
+.nut-sec .eyebrow{color:var(--gold)}
+.nut-sec .eyebrow::before{background:var(--gold)}
+.nut-sec .sec-title{color:#fff}
+.nut-sec .sec-desc{color:rgba(255,255,255,.48)}
+.nut-lay{display:grid;grid-template-columns:1fr 1.6fr;gap:4.5rem;align-items:start}
+.nh-list{display:flex;flex-direction:column;gap:.9rem;margin-top:2.2rem}
+.nhc{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--rm);padding:1.1rem 1.4rem;
+  display:flex;align-items:center;gap:1.1rem;
+  transition:background .3s,border-color .3s,transform .3s var(--ease);
+}
+.nhc:hover{background:rgba(255,255,255,.09);border-color:rgba(201,151,60,.3);transform:translateX(6px)}
+.nhc-icon{font-size:1.7rem;flex-shrink:0}
+.nhc-val{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;color:var(--gold-lt);line-height:1}
+.nhc-name{font-size:.78rem;color:rgba(255,255,255,.48);margin-top:2px}
+.tbl-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid rgba(255,255,255,.09)}
+table{width:100%;border-collapse:collapse;min-width:380px}
+thead{background:rgba(201,151,60,.14)}
+th{padding:.95rem 1.3rem;text-align:left;font-size:.77rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+td{padding:.95rem 1.3rem;border-bottom:1px solid rgba(255,255,255,.06);font-size:.88rem;color:rgba(255,255,255,.72)}
+tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.03);color:#fff}
+.hl{color:var(--gold-lt)!important;font-weight:600}
+.stars{color:var(--gold);letter-spacing:2px}
 
-        /* ─── PRODUCTS ─── */
-        .products-section { background: var(--white); }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-        .product-card {
-            border-radius: var(--r-lg);
-            padding: 2rem 1.5rem;
-            background: var(--parchment);
-            text-align: center;
-            transition: all 0.4s var(--ease-out);
-            border: 1px solid transparent;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        .product-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--berry), var(--blush));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s var(--ease-out);
-        }
-        .product-card:hover::before { transform: scaleX(1); }
-        .product-card:hover {
-            background: var(--white);
-            border-color: rgba(107,26,68,0.12);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(107,26,68,0.1);
-        }
-        .p-emoji {
-            font-size: 3.5rem;
-            display: block;
-            margin-bottom: 1rem;
-            transition: transform 0.4s var(--ease-out);
-            filter: drop-shadow(0 4px 12px rgba(107,26,68,0.15));
-        }
-        .product-card:hover .p-emoji { transform: scale(1.15) rotate(-5deg); }
-        .product-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--ink);
-            margin-bottom: 0.4rem;
-            letter-spacing: -0.2px;
-        }
-        .product-card p {
-            font-size: 0.82rem;
-            color: var(--muted);
-            line-height: 1.6;
-            font-weight: 300;
-            margin-bottom: 1rem;
-        }
-        .p-tag {
-            display: inline-block;
-            background: var(--berry);
-            color: #fff;
-            font-size: 0.78rem;
-            font-weight: 600;
-            padding: 0.3rem 0.9rem;
-            border-radius: 50px;
-            letter-spacing: 0.3px;
-        }
+/* ═══════════════════════════════
+   CONTACT
+═══════════════════════════════ */
+.con-sec{background:var(--berry);position:relative;overflow:hidden}
+.con-sec::before{content:'';position:absolute;top:-50%;right:-18%;width:560px;height:560px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);border-radius:50%;pointer-events:none}
+.con-inner{max-width:760px;text-align:center;margin:0 auto;position:relative;z-index:1}
+.con-inner .eyebrow{color:var(--gold-lt);justify-content:center}
+.con-inner .eyebrow::before{background:var(--gold-lt)}
+.con-inner .sec-title{color:#fff;text-align:center}
+.con-inner .sec-desc{color:rgba(255,255,255,.68);text-align:center;margin:.8rem auto 0}
+.con-cards{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin:2.2rem 0}
+.ccard{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  border-radius:var(--rm);padding:1.1rem 1.6rem;
+  color:#fff;display:flex;align-items:center;gap:.75rem;
+  font-size:.93rem;font-weight:500;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:background .28s,transform .28s var(--ease);
+}
+.ccard:hover{background:rgba(255,255,255,.18);transform:translateY(-3px)}
+.btn-w{background:#fff;color:var(--berry);box-shadow:0 10px 28px rgba(0,0,0,.18)}
+.btn-w:hover{background:var(--cream);transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.22)}
 
-        /* ─── NUTRITION ─── */
-        .nutrition-section {
-            background: var(--ink);
-            color: #fff;
-        }
-        .nutrition-section .section-title { color: #fff; }
-        .nutrition-section .section-desc { color: rgba(255,255,255,0.5); }
-        .nutrition-section .section-eyebrow { color: var(--gold); }
-        .nutrition-section .section-eyebrow::before { background: var(--gold); }
-        .nutrition-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.6fr;
-            gap: 5rem;
-            align-items: start;
-        }
-        .nutrition-highlight-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2.5rem;
-        }
-        .nh-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: var(--r-md);
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            transition: all 0.3s var(--ease-out);
-        }
-        .nh-card:hover {
-            background: rgba(255,255,255,0.09);
-            border-color: rgba(201,151,60,0.3);
-            transform: translateX(6px);
-        }
-        .nh-icon { font-size: 1.8rem; flex-shrink: 0; }
-        .nh-val {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--gold-lt);
-            line-height: 1;
-        }
-        .nh-name { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
-        .nutrition-table-wrap {
-            overflow-x: auto;
-            border-radius: var(--r-lg);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .nutrition-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 420px;
-        }
-        .nutrition-table thead {
-            background: rgba(201,151,60,0.15);
-        }
-        .nutrition-table th {
-            padding: 1rem 1.4rem;
-            text-align: left;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-        .nutrition-table td {
-            padding: 1rem 1.4rem;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.75);
-        }
-        .nutrition-table tr:last-child td { border-bottom: none; }
-        .nutrition-table tbody tr:hover td { background: rgba(255,255,255,0.03); color: #fff; }
-        .hl { color: var(--gold-lt) !important; font-weight: 600; }
-        .star-rating { color: var(--gold); letter-spacing: 2px; }
+footer{background:var(--ink);color:rgba(255,255,255,.38);text-align:center;padding:1.8rem 1rem;font-size:.83rem}
+footer a{color:var(--blush)}
 
-        /* ─── CONTACT ─── */
-        .contact-section {
-            background: var(--berry);
-            position: relative;
-            overflow: hidden;
-        }
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: -50%; right: -20%;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .contact-inner {
-            max-width: 800px;
-            text-align: center;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        .contact-inner .section-eyebrow { color: var(--gold-lt); justify-content: center; }
-        .contact-inner .section-eyebrow::before { background: var(--gold-lt); }
-        .contact-inner .section-title { color: #fff; text-align: center; }
-        .contact-inner .section-desc { color: rgba(255,255,255,0.7); text-align: center; margin: 0 auto; }
-        .contact-cards {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 2.5rem 0;
-        }
-        .c-card {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: var(--r-md);
-            padding: 1.2rem 1.8rem;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s var(--ease-out);
-            backdrop-filter: blur(10px);
-        }
-        .c-card:hover {
-            background: rgba(255,255,255,0.18);
-            transform: translateY(-3px);
-        }
-        .c-card .icon { font-size: 1.3rem; }
-        .btn-contact {
-            background: #fff;
-            color: var(--berry);
-            font-weight: 700;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
-        }
-        .btn-contact:hover {
-            background: var(--cream);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 48px rgba(0,0,0,0.25);
-        }
+/* ═══════════════════════════════
+   SCROLL TO TOP
+═══════════════════════════════ */
+#stb{
+  position:fixed;bottom:1.8rem;right:1.8rem;
+  width:46px;height:46px;border-radius:13px;
+  background:var(--berry);color:#fff;border:none;cursor:pointer;
+  font-size:1.1rem;box-shadow:0 7px 20px rgba(107,26,68,.38);
+  z-index:900;opacity:0;pointer-events:none;
+  transform:translateY(10px);
+  transition:opacity .32s var(--ease),transform .32s var(--ease),background .25s;
+  display:flex;align-items:center;justify-content:center;
+  contain:layout style;
+}
+#stb.on{opacity:1;pointer-events:all;transform:translateY(0)}
+#stb:hover{background:var(--plum);transform:translateY(-3px)}
 
-        /* ─── FOOTER ─── */
-        footer {
-            background: var(--ink);
-            color: rgba(255,255,255,0.4);
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.85rem;
-        }
-        footer a { color: var(--blush); text-decoration: none; }
+/* ═══════════════════════════════
+   REVEAL ANIMATIONS
+═══════════════════════════════ */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
-        /* ─── SCROLL TOP ─── */
-        #scrollTop {
-            position: fixed;
-            bottom: 2rem; right: 2rem;
-            width: 48px; height: 48px;
-            border-radius: 14px;
-            background: var(--berry);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            box-shadow: 0 8px 24px rgba(107,26,68,0.4);
-            z-index: 900;
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(12px);
-            transition: all 0.35s var(--ease-out);
-            display: flex; align-items: center; justify-content: center;
-        }
-        #scrollTop.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-        #scrollTop:hover { background: var(--plum); transform: translateY(-3px); }
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media(max-width:1024px){
+  .ben-grid{grid-template-columns:repeat(2,1fr)}
+  .bcard.feat{grid-column:span 2}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .nut-lay{grid-template-columns:1fr;gap:2.8rem}
+}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:7rem 1.5rem 3.5rem;gap:2.5rem}
+  .hero-sub{margin:0 auto 2.2rem}
+  .btns{justify-content:center}
+  .hero-stats{justify-content:center}
+  .hero-vis{display:none}
+  .about-grid,.ben-grid{grid-template-columns:1fr}
+  .bcard.feat{grid-column:span 1;flex-direction:column;text-align:center}
+  .prod-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-list{position:fixed;inset:0 0 0 auto;width:270px;background:var(--white);flex-direction:column;padding:6.5rem 1.8rem 2rem;gap:.3rem;box-shadow:-10px 0 44px rgba(26,14,38,.1);transform:translateX(100%);transition:transform .38s var(--ease);z-index:999;border-left:1px solid var(--fog)}
+  .nav-list.on{transform:translateX(0)}
+  .burger{display:flex}
+  .wrap{padding:4rem 1.5rem}
+  .ben-head{flex-direction:column}
+  .about-grid{gap:2.2rem}
+}
+@media(max-width:480px){
+  .prod-grid{grid-template-columns:1fr}
+  .hero h1{font-size:2.8rem}
+  .hero-stats{flex-direction:column;gap:1.2rem;align-items:center}
+  .nut-lay{gap:2rem}
+}
 
-        /* ─── REVEAL ─── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
-        }
-        .reveal.in { opacity: 1; transform: none; }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-
-        /* ─── DIVIDER ─── */
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--fog), transparent);
-        }
-
-        /* ─── RESPONSIVE ─── */
-        @media (max-width: 1024px) {
-            .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-            .benefit-card.featured { grid-column: span 2; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); }
-            .nutrition-layout { grid-template-columns: 1fr; gap: 3rem; }
-        }
-        @media (max-width: 768px) {
-            .hero { grid-template-columns: 1fr; text-align: center; padding: 7rem 1.5rem 4rem; gap: 3rem; }
-            .hero-sub { margin: 0 auto 2.5rem; }
-            .hero-btns { justify-content: center; }
-            .hero-stats { justify-content: center; }
-            .hero-visual { display: none; }
-            .about-grid { grid-template-columns: 1fr; }
-            .benefits-grid { grid-template-columns: 1fr; }
-            .benefit-card.featured { grid-column: span 1; flex-direction: column; text-align: center; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links {
-                position: fixed;
-                inset: 0 0 0 auto;
-                width: 280px;
-                background: var(--white);
-                flex-direction: column;
-                padding: 7rem 2rem 2rem;
-                gap: 0.4rem;
-                box-shadow: -12px 0 48px rgba(26,14,38,0.12);
-                transform: translateX(100%);
-                transition: transform 0.4s var(--ease-out);
-                z-index: 999;
-                border-left: 1px solid var(--fog);
-            }
-            .nav-links.open { transform: translateX(0); }
-            .hamburger { display: flex; }
-            .wrapper { padding: 4rem 1.5rem; }
-            .about-grid { gap: 2.5rem; }
-            .benefits-top { flex-direction: column; }
-        }
-        @media (max-width: 480px) {
-            .products-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.8rem; }
-            .hero-stats { flex-direction: column; gap: 1.5rem; align-items: center; }
-        }
-    </style>
+/* Respect reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .orb::before,.orb::after{animation:none}
+  .orb-emoji{animation:none}
+  .ftag{animation:none}
+}
+</style>
 </head>
 <body>
 
-<div class="hero-bg"></div>
+<!-- ══════════════════════════════
+     BOTANICAL SVG BACKGROUND
+══════════════════════════════ -->
+<div class="bg-botanical" aria-hidden="true">
+<svg width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice"
+     xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+  <defs>
+    <!-- Berry gradient -->
+    <radialGradient id="bg1" cx="35%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#c44d84" stop-opacity=".18"/>
+      <stop offset="100%" stop-color="#6b1a44" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg2" cx="65%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#6b1a44" stop-opacity=".12"/>
+      <stop offset="100%" stop-color="#3b1050" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Leaf shape -->
+    <path id="leaf" d="M0,-22 C12,-14 14,0 0,18 C-14,0 -12,-14 0,-22 Z"/>
+    <path id="leaf-sm" d="M0,-14 C8,-9 9,0 0,11 C-9,0 -8,-9 0,-14 Z"/>
+    <!-- Berry cluster -->
+    <g id="cluster">
+      <circle cx="0" cy="0" r="7" fill="#3d0a22"/>
+      <circle cx="0" cy="0" r="2.2" fill="rgba(255,255,255,.2)"/>
+      <circle cx="13" cy="-5" r="6.5" fill="#4a0f2a"/>
+      <circle cx="13" cy="-5" r="2" fill="rgba(255,255,255,.18)"/>
+      <circle cx="7" cy="-14" r="6" fill="#5c1234"/>
+      <circle cx="7" cy="-14" r="1.8" fill="rgba(255,255,255,.16)"/>
+      <circle cx="-10" cy="-8" r="5.5" fill="#3d0a22"/>
+      <circle cx="-10" cy="-8" r="1.5" fill="rgba(255,255,255,.16)"/>
+    </g>
+    <!-- Stem path reusable -->
+    <path id="stem" d="M0,0 Q8,-30 0,-60" stroke="#4a6a28" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </defs>
 
-<!-- ══════ NAVIGATION ══════ -->
-<nav class="navbar" id="navbar">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">
-            <div class="logo-mark">🫐</div>
-            <span class="logo-text">Aronia <em>Natur</em></span>
-        </a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#despre">Despre</a></li>
-            <li><a href="#beneficii">Beneficii</a></li>
-            <li><a href="#produse">Produse</a></li>
-            <li><a href="#nutritie">Nutriție</a></li>
-            <li><a href="#contact" class="nav-cta">Contact</a></li>
-        </ul>
-        <div class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
-        </div>
-    </div>
+  <!-- Ambient blobs -->
+  <rect width="1440" height="900" fill="url(#bg1)"/>
+  <rect width="1440" height="900" fill="url(#bg2)"/>
+
+  <!-- ── LARGE DECORATIVE BRANCHES ── -->
+  <!-- Top-left branch -->
+  <g transform="translate(80,20) rotate(25)" opacity=".22">
+    <path d="M0,0 Q-20,60 10,130 Q30,190 0,260" stroke="#4a6a28" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- leaves on branch -->
+    <g transform="translate(8,50) rotate(-30)"><use href="#leaf" fill="#5a7a30"/></g>
+    <g transform="translate(6,80) rotate(40)"><use href="#leaf" fill="#4a6a28"/></g>
+    <g transform="translate(12,115) rotate(-20)"><use href="#leaf" fill="#5a7a30"/></g>
+    <g transform="translate(-4,150) rotate(50)"><use href="#leaf-sm" fill="#6a8a38"/></g>
+    <g transform="translate(9,200) rotate(-35)"><use href="#leaf" fill="#4a6a28"/></g>
+    <!-- berries -->
+    <g transform="translate(16,95)" opacity=".9"><use href="#cluster"/></g>
+    <g transform="translate(-8,170)" opacity=".85"><use href="#cluster" transform="scale(.8)"/></g>
+  </g>
+
+  <!-- Top-right branch -->
+  <g transform="translate(1380,0) rotate(-20) scale(-1,1)" opacity=".2">
+    <path d="M0,0 Q20,50 -5,110 Q-25,170 5,240" stroke="#4a6a28" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <g transform="translate(-10,45) rotate(30)"><use href="#leaf" fill="#5a7a30"/></g>
+    <g transform="translate(-8,85) rotate(-40)"><use href="#leaf" fill="#4a6a28"/></g>
+    <g transform="translate(-14,130) rotate(20)"><use href="#leaf-sm" fill="#6a8a38"/></g>
+    <g transform="translate(2,175) rotate(-50)"><use href="#leaf" fill="#4a6a28"/></g>
+    <g transform="translate(-9,95)" opacity=".9"><use href="#cluster"/></g>
+    <g transform="translate(6,175)" opacity=".85"><use href="#cluster" transform="scale(.8)"/></g>
+  </g>
+
+  <!-- Bottom-left branch -->
+  <g transform="translate(30,850) rotate(-60)" opacity=".18">
+    <path d="M0,0 Q15,-40 -5,-90 Q-25,-140 10,-200" stroke="#4a6a28" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <g transform="translate(-6,-55) rotate(25)"><use href="#leaf-sm" fill="#5a7a30"/></g>
+    <g transform="translate(8,-95) rotate(-35)"><use href="#leaf" fill="#4a6a28"/></g>
+    <g transform="translate(-10,-140) rotate(15)"><use href="#leaf-sm" fill="#6a8a38"/></g>
+    <g transform="translate(0,-110)" opacity=".8"><use href="#cluster" transform="scale(.75)"/></g>
+  </g>
+
+  <!-- Bottom-right branch -->
+  <g transform="translate(1420,880) rotate(130) scale(-1,1)" opacity=".18">
+    <path d="M0,0 Q15,-40 -5,-90 Q-25,-140 10,-200" stroke="#4a6a28" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <g transform="translate(-6,-55) rotate(25)"><use href="#leaf-sm" fill="#5a7a30"/></g>
+    <g transform="translate(8,-95) rotate(-35)"><use href="#leaf" fill="#4a6a28"/></g>
+    <g transform="translate(0,-110)" opacity=".8"><use href="#cluster" transform="scale(.75)"/></g>
+  </g>
+
+  <!-- Mid-right scattered berries -->
+  <g transform="translate(1300,400)" opacity=".14">
+    <path d="M0,0 Q-10,25 5,55 Q15,80 -5,110" stroke="#5a7a30" stroke-width="2" fill="none"/>
+    <g transform="translate(-12,30) rotate(20)"><use href="#leaf-sm" fill="#5a7a30"/></g>
+    <g transform="translate(8,65) rotate(-25)"><use href="#leaf-sm" fill="#4a6a28"/></g>
+    <g transform="translate(0,42)" opacity=".9"><use href="#cluster" transform="scale(.7)"/></g>
+  </g>
+
+  <!-- Mid-left scattered berries -->
+  <g transform="translate(140,500)" opacity=".13">
+    <path d="M0,0 Q12,22 -4,52 Q-18,78 3,108" stroke="#5a7a30" stroke-width="2" fill="none"/>
+    <g transform="translate(10,28) rotate(-20)"><use href="#leaf-sm" fill="#5a7a30"/></g>
+    <g transform="translate(-8,62) rotate(30)"><use href="#leaf-sm" fill="#4a6a28"/></g>
+    <g transform="translate(0,44)" opacity=".9"><use href="#cluster" transform="scale(.65)"/></g>
+  </g>
+
+  <!-- Scattered lone berries across page -->
+  <circle cx="380" cy="140" r="9" fill="#5c1234" opacity=".09"/><circle cx="380" cy="140" r="3" fill="rgba(255,255,255,.25)" opacity=".09"/>
+  <circle cx="1060" cy="220" r="7" fill="#6b1a44" opacity=".08"/>
+  <circle cx="220" cy="680" r="11" fill="#4a0f2a" opacity=".07"/>
+  <circle cx="1200" cy="700" r="8" fill="#5c1234" opacity=".08"/>
+  <circle cx="700" cy="80" r="6" fill="#6b1a44" opacity=".06"/>
+  <circle cx="840" cy="820" r="9" fill="#4a0f2a" opacity=".07"/>
+  <circle cx="520" cy="760" r="7" fill="#5c1234" opacity=".06"/>
+  <circle cx="960" cy="600" r="5" fill="#6b1a44" opacity=".07"/>
+
+  <!-- Floating individual leaves (scattered) -->
+  <g transform="translate(310,310) rotate(15)" opacity=".1"><use href="#leaf-sm" fill="#5a7a30"/></g>
+  <g transform="translate(1120,350) rotate(-25)" opacity=".1"><use href="#leaf" fill="#4a6a28"/></g>
+  <g transform="translate(680,620) rotate(40)" opacity=".08"><use href="#leaf-sm" fill="#6a8a38"/></g>
+  <g transform="translate(430,520) rotate(-10)" opacity=".09"><use href="#leaf-sm" fill="#5a7a30"/></g>
+  <g transform="translate(1050,560) rotate(30)" opacity=".08"><use href="#leaf-sm" fill="#4a6a28"/></g>
+  <g transform="translate(760,180) rotate(-40)" opacity=".07"><use href="#leaf" fill="#5a7a30"/></g>
+
+  <!-- Gold/honey accent specks -->
+  <circle cx="1380" cy="150" r="5" fill="#c9973c" opacity=".07"/>
+  <circle cx="60" cy="400" r="4" fill="#c9973c" opacity=".06"/>
+  <circle cx="720" cy="850" r="6" fill="#e8c87c" opacity=".06"/>
+  <circle cx="1150" cy="780" r="4" fill="#c9973c" opacity=".05"/>
+</svg>
+
+<!-- Animated floating particles via canvas (lightweight, throttled) -->
+<canvas id="bgc" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none"></canvas>
+</div>
+
+<div class="bg-gradient"></div>
+
+<!-- ══════════════════════════════
+     NAVIGATION
+══════════════════════════════ -->
+<nav class="nav" id="nav" role="navigation" aria-label="Navigare principală">
+  <div class="nav-inner">
+    <a href="#" class="logo" aria-label="Aronia Natur — Pagina principală">
+      <div class="logo-box" aria-hidden="true">🫐</div>
+      <span class="logo-name">Aronia <em>Natur</em></span>
+    </a>
+    <ul class="nav-list" id="navList" role="list">
+      <li><a href="#despre">Despre</a></li>
+      <li><a href="#beneficii">Beneficii</a></li>
+      <li><a href="#produse">Produse</a></li>
+      <li><a href="#nutritie">Nutriție</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Deschide meniu" aria-expanded="false" aria-controls="navList">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
-<!-- ══════ HERO ══════ -->
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
 <header id="hero">
-    <div class="hero">
-        <div class="hero-content">
-            <div class="hero-label">Superaliment Natural</div>
-            <h1>Natura în cea<br>mai <span class="accent">pură</span> formă a ei</h1>
-            <p class="hero-sub">
-                Aronia — fructul cu cel mai ridicat conținut de antioxidanți cunoscut în lume.
-                Un dar pur al naturii pentru imunitate, vitalitate și longevitate.
-            </p>
-            <div class="hero-btns">
-                <a href="#beneficii" class="btn btn-primary">Descoperă Beneficiile</a>
-                <a href="#produse" class="btn btn-ghost">Produse Naturale</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-num">3×</div>
-                    <div class="stat-label">Mai mulți antioxidanți decât afinele</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">1480</div>
-                    <div class="stat-label">mg antocianine / 100g</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-num">100%</div>
-                    <div class="stat-label">Natural, fără aditivi</div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-visual reveal">
-            <div class="hero-orb">
-                <div class="hero-berry-big">🫐</div>
-                <div class="hero-badges-floating">
-                    <div class="badge-float"><span class="badge-icon">🛡️</span> Imunitate puternică</div>
-                    <div class="badge-float"><span class="badge-icon">❤️</span> Inimă sănătoasă</div>
-                    <div class="badge-float"><span class="badge-icon">✨</span> Piele tânără</div>
-                </div>
-            </div>
-        </div>
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow" aria-hidden="true">Superaliment Natural</div>
+      <h1>Natura în cea<br>mai <span class="hi">pură</span> formă a ei</h1>
+      <p class="hero-sub">Aronia — fructul cu cel mai ridicat conținut de antioxidanți cunoscut în lume. Un dar pur al naturii pentru imunitate, vitalitate și longevitate.</p>
+      <div class="btns">
+        <a href="#beneficii" class="btn btn-p">Descoperă Beneficiile</a>
+        <a href="#produse" class="btn btn-g">Produse Naturale</a>
+      </div>
+      <div class="hero-stats" role="list">
+        <div role="listitem"><div class="sn">3×</div><div class="sl">Mai mulți antioxidanți decât afinele</div></div>
+        <div role="listitem"><div class="sn">1480</div><div class="sl">mg antocianine / 100g</div></div>
+        <div role="listitem"><div class="sn">100%</div><div class="sl">Natural, fără aditivi</div></div>
+      </div>
     </div>
+    <div class="hero-vis" aria-hidden="true">
+      <div class="orb">
+        <div class="orb-emoji">🫐</div>
+        <div class="float-tags">
+          <div class="ftag">🛡️ Imunitate puternică</div>
+          <div class="ftag">❤️ Inimă sănătoasă</div>
+          <div class="ftag">✨ Piele tânără</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
-<!-- ══════ DESPRE ══════ -->
-<section class="about-section" id="despre">
-    <div class="wrapper">
-        <div class="about-grid">
-            <div class="about-img-wrap reveal">
-                <div class="about-img-card">🫐</div>
-                <div class="about-info-tag">
-                    <span class="big-num">10×</span>
-                    <span class="label">vs. Merișoare</span>
-                </div>
-            </div>
-            <div class="about-text reveal reveal-delay-2">
-                <div class="section-eyebrow">Cunoaște Planta</div>
-                <h2 class="section-title">Ce este <em>Aronia</em>?</h2>
-                <p class="section-desc" style="max-width:100%; margin-bottom: 1.5rem;">
-                    Arbust originar din America de Nord, cultivat astăzi cu succes în Europa de Est. Boabele
-                    sale violet-închis conțin una dintre cele mai concentrate surse naturale de antioxidanți
-                    descoperite până acum.
-                </p>
-                <p>
-                    Cunoscută și sub numele de <strong>scoruș negru</strong> (<em>Aronia melanocarpa</em>),
-                    este recunoscută global pentru profilul său nutrițional excepțional. România se numără
-                    printre țările cu cele mai bune condiții de cultură pentru acest superaliment.
-                </p>
-                <div class="callout">
-                    💡 <strong>Știai?</strong> Aronia conține de <strong>3× mai mulți antioxidanți</strong>
-                    decât afinele și de <strong>10× mai mulți</strong> decât merișoarele — confirmat de
-                    studii clinice internaționale.
-                </div>
-                <p>
-                    Consumată proaspătă sau sub formă de sucuri, siropuri, pudră sau capsule, aronia se
-                    integrează ușor în orice stil de viață sănătos.
-                </p>
-            </div>
-        </div>
+<!-- ══════════════════════════════
+     DESPRE
+══════════════════════════════ -->
+<section class="about-sec" id="despre">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="rv" style="position:relative">
+        <div class="about-img" role="img" aria-label="Boabe de aronia">🫐</div>
+        <div class="about-tag"><strong>10×</strong><small>vs. Merișoare</small></div>
+      </div>
+      <div class="about-text rv d2">
+        <div class="eyebrow">Cunoaște Planta</div>
+        <h2 class="sec-title">Ce este <em>Aronia</em>?</h2>
+        <p class="sec-desc" style="max-width:100%;margin-bottom:1.3rem">Arbust originar din America de Nord, cultivat cu succes în Europa de Est. Boabele sale violet-închis conțin una dintre cele mai concentrate surse naturale de antioxidanți descoperite până acum.</p>
+        <p>Cunoscută și sub numele de <strong>scoruș negru</strong> (<em>Aronia melanocarpa</em>), recunoscută global pentru profilul nutrițional excepțional. România se numără printre țările cu cele mai bune condiții de cultură.</p>
+        <div class="callout">💡 <strong>Știai?</strong> Aronia conține de <strong>3× mai mulți antioxidanți</strong> decât afinele și de <strong>10× mai mulți</strong> decât merișoarele — confirmat de studii clinice internaționale.</div>
+        <p>Consumată proaspătă sau sub formă de sucuri, siropuri, pudră sau capsule, se integrează ușor în orice stil de viață sănătos.</p>
+      </div>
     </div>
+  </div>
 </section>
-
 <div class="divider"></div>
 
-<!-- ══════ BENEFICII ══════ -->
-<section class="benefits-section" id="beneficii">
-    <div class="wrapper">
-        <div class="benefits-top">
-            <div class="reveal">
-                <div class="section-eyebrow">Sănătate Naturală</div>
-                <h2 class="section-title">Beneficiile<br><em>Aroniei</em></h2>
-            </div>
-            <p class="section-desc reveal reveal-delay-2">
-                Motivul pentru care aronia este numită „comoara neagră" a naturii și recomandată de nutriționiști la nivel mondial.
-            </p>
-        </div>
-        <div class="benefits-grid">
-            <div class="benefit-card featured reveal">
-                <div class="b-icon" style="width:64px;height:64px;font-size:2rem;flex-shrink:0;">🛡️</div>
-                <div>
-                    <div class="benefit-num">01</div>
-                    <h3>Imunitate de Fier</h3>
-                    <p>Conținutul ridicat de vitamina C, zinc și polifenoli oferă un scut natural puternic împotriva infecțiilor virale și bacteriene, pregătind organismul să răspundă eficient oricărei amenințări.</p>
-                </div>
-            </div>
-            <div class="benefit-card reveal reveal-delay-1">
-                <div class="benefit-num">02</div>
-                <div class="b-icon">❤️</div>
-                <h3>Sănătatea Inimii</h3>
-                <p>Reduce tensiunea arterială, scade LDL-ul și îmbunătățește circulația sangvină.</p>
-            </div>
-            <div class="benefit-card reveal reveal-delay-2">
-                <div class="benefit-num">03</div>
-                <div class="b-icon">🧠</div>
-                <h3>Claritate Mentală</h3>
-                <p>Protejează neuronii de stresul oxidativ, sprijinind memoria și concentrarea.</p>
-            </div>
-            <div class="benefit-card reveal">
-                <div class="benefit-num">04</div>
-                <div class="b-icon">🩸</div>
-                <h3>Glicemie Stabilă</h3>
-                <p>Ideală pentru persoanele cu diabet tip 2 — ajută la menținerea unui nivel optim de zahăr în sânge.</p>
-            </div>
-            <div class="benefit-card reveal reveal-delay-1">
-                <div class="benefit-num">05</div>
-                <div class="b-icon">✨</div>
-                <h3>Piele Tânără</h3>
-                <p>Antocianinele combat radicalii liberi, încetinind îmbătrânirea și redând elasticitate pielii.</p>
-            </div>
-            <div class="benefit-card reveal reveal-delay-2">
-                <div class="benefit-num">06</div>
-                <div class="b-icon">🦠</div>
-                <h3>Antiinflamator</h3>
-                <p>Reduce inflamațiile cronice — utilă în artrită, boli autoimune și inflamații digestive.</p>
-            </div>
-            <div class="benefit-card reveal">
-                <div class="benefit-num">07</div>
-                <div class="b-icon">👁️</div>
-                <h3>Vedere Clară</h3>
-                <p>Protejează retina și reduce riscul degenerescenței maculare legate de vârstă.</p>
-            </div>
-            <div class="benefit-card reveal reveal-delay-1">
-                <div class="benefit-num">08</div>
-                <div class="b-icon">🏃</div>
-                <h3>Energie & Recuperare</h3>
-                <p>Accelerează recuperarea musculară post-efort — alegerea ideală pentru sportivi activi.</p>
-            </div>
-        </div>
+<!-- ══════════════════════════════
+     BENEFICII
+══════════════════════════════ -->
+<section class="ben-sec" id="beneficii">
+  <div class="wrap">
+    <div class="ben-head">
+      <div class="rv">
+        <div class="eyebrow">Sănătate Naturală</div>
+        <h2 class="sec-title">Beneficiile<br><em>Aroniei</em></h2>
+      </div>
+      <p class="sec-desc rv d2">Motivul pentru care aronia este numită „comoara neagră" a naturii și recomandată de nutriționiști la nivel mondial.</p>
     </div>
+    <div class="ben-grid">
+      <div class="bcard feat rv">
+        <div class="bicon">🛡️</div>
+        <div><div class="bnum">01</div><h3>Imunitate de Fier</h3><p>Vitamina C, zinc și polifenoli oferă un scut natural puternic împotriva infecțiilor virale și bacteriene, pregătind organismul să răspundă eficient.</p></div>
+      </div>
+      <div class="bcard rv d1"><div class="bnum">02</div><div class="bicon">❤️</div><h3>Sănătatea Inimii</h3><p>Reduce tensiunea arterială, scade LDL-ul și îmbunătățește circulația sangvină.</p></div>
+      <div class="bcard rv d2"><div class="bnum">03</div><div class="bicon">🧠</div><h3>Claritate Mentală</h3><p>Protejează neuronii de stresul oxidativ, sprijinind memoria și concentrarea.</p></div>
+      <div class="bcard rv"><div class="bnum">04</div><div class="bicon">🩸</div><h3>Glicemie Stabilă</h3><p>Recomandată persoanelor cu diabet tip 2 — menține un nivel optim de zahăr în sânge.</p></div>
+      <div class="bcard rv d1"><div class="bnum">05</div><div class="bicon">✨</div><h3>Piele Tânără</h3><p>Antocianinele combat radicalii liberi, încetinind îmbătrânirea și redând elasticitate pielii.</p></div>
+      <div class="bcard rv d2"><div class="bnum">06</div><div class="bicon">🦠</div><h3>Antiinflamator</h3><p>Reduce inflamațiile cronice — utilă în artrită, boli autoimune și inflamații digestive.</p></div>
+      <div class="bcard rv"><div class="bnum">07</div><div class="bicon">👁️</div><h3>Vedere Clară</h3><p>Protejează retina și reduce riscul degenerescenței maculare legate de vârstă.</p></div>
+      <div class="bcard rv d1"><div class="bnum">08</div><div class="bicon">🏃</div><h3>Energie & Recuperare</h3><p>Accelerează recuperarea musculară post-efort — alegerea ideală pentru sportivi activi.</p></div>
+    </div>
+  </div>
 </section>
-
 <div class="divider"></div>
 
-<!-- ══════ PRODUSE ══════ -->
-<section class="products-section" id="produse">
-    <div class="wrapper">
-        <div class="benefits-top">
-            <div class="reveal">
-                <div class="section-eyebrow">Gama Noastră</div>
-                <h2 class="section-title">Produse din<br><em>Aronia</em></h2>
-            </div>
-            <p class="section-desc reveal reveal-delay-2">100% naturale, fără aditivi sau conservanți artificiali. Recoltate și procesate cu grijă în România.</p>
-        </div>
-        <div class="products-grid">
-            <div class="product-card reveal">
-                <span class="p-emoji">🧃</span>
-                <h3>Suc de Aronia</h3>
-                <p>Presat la rece, păstrează toate vitaminele și antioxidanții. Ideal în smoothie-uri.</p>
-                <span class="p-tag">500 ml</span>
-            </div>
-            <div class="product-card reveal reveal-delay-1">
-                <span class="p-emoji">🍯</span>
-                <h3>Sirop de Aronia</h3>
-                <p>Îndulcit natural, perfect pentru limonade, ceaiuri sau deserturi rafinate.</p>
-                <span class="p-tag">350 ml</span>
-            </div>
-            <div class="product-card reveal reveal-delay-2">
-                <span class="p-emoji">🍓</span>
-                <h3>Dulceață de Aronia</h3>
-                <p>Fără zahăr adăugat — doar fructe și îndulcitor natural. Delicioasă pe pâine prăjită.</p>
-                <span class="p-tag">300 g</span>
-            </div>
-            <div class="product-card reveal reveal-delay-3">
-                <span class="p-emoji">🫗</span>
-                <h3>Pudră de Aronia</h3>
-                <p>Fructe liofilizate și măcinate fin. Se adaugă în iaurt, cereale sau shake-uri.</p>
-                <span class="p-tag">200 g</span>
-            </div>
-            <div class="product-card reveal">
-                <span class="p-emoji">🍷</span>
-                <h3>Vin de Aronia</h3>
-                <p>Fermentat natural, cu aromă bogată și taninuri fine. Un vin aparte pentru cunoscători.</p>
-                <span class="p-tag">750 ml</span>
-            </div>
-            <div class="product-card reveal reveal-delay-1">
-                <span class="p-emoji">💊</span>
-                <h3>Capsule cu Aronia</h3>
-                <p>Extract concentrat pentru un aport zilnic rapid și convenabil de antioxidanți.</p>
-                <span class="p-tag">60 capsule</span>
-            </div>
-            <div class="product-card reveal reveal-delay-2">
-                <span class="p-emoji">🍵</span>
-                <h3>Ceai din Aronia</h3>
-                <p>Fructe uscate întregi, ideale pentru infuzii calde, pline de savoare și beneficii.</p>
-                <span class="p-tag">150 g</span>
-            </div>
-            <div class="product-card reveal reveal-delay-3">
-                <span class="p-emoji">🧴</span>
-                <h3>Ulei din Semințe</h3>
-                <p>Presat la rece, bogat în acizi grași esențiali. Excelent pentru piele și păr.</p>
-                <span class="p-tag">100 ml</span>
-            </div>
-        </div>
+<!-- ══════════════════════════════
+     PRODUSE
+══════════════════════════════ -->
+<section class="prod-sec" id="produse">
+  <div class="wrap">
+    <div class="ben-head">
+      <div class="rv">
+        <div class="eyebrow">Gama Noastră</div>
+        <h2 class="sec-title">Produse din<br><em>Aronia</em></h2>
+      </div>
+      <p class="sec-desc rv d2">100% naturale, fără aditivi sau conservanți artificiali. Recoltate și procesate cu grijă în România.</p>
     </div>
+    <div class="prod-grid">
+
+      <!-- SUC -->
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Suc de Aronia">
+          <defs>
+            <linearGradient id="s1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9b2d5c"/><stop offset="100%" stop-color="#4a0f2a"/></linearGradient>
+            <linearGradient id="s2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7a1f48" stop-opacity=".95"/><stop offset="100%" stop-color="#3a0a1e"/></linearGradient>
+          </defs>
+          <path d="M38 48Q30 56 28 72L26 108Q26 120 40 120L70 120Q84 120 84 108L82 72Q80 56 72 48Z" fill="url(#s1)"/>
+          <rect x="41" y="26" width="28" height="24" rx="6" fill="#7a1f48"/>
+          <rect x="38" y="14" width="34" height="15" rx="6" fill="#2d6a1f"/>
+          <rect x="40" y="16" width="30" height="11" rx="5" fill="#3a8828"/>
+          <path d="M28 78Q55 72 82 78L82 108Q82 118 70 118L40 118Q28 118 28 108Z" fill="url(#s2)"/>
+          <rect x="31" y="82" width="48" height="28" rx="5" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.22)" stroke-width=".8"/>
+          <text x="55" y="93" font-family="Georgia,serif" font-size="6" fill="white" text-anchor="middle" font-weight="bold">ARONIA</text>
+          <text x="55" y="102" font-family="Arial,sans-serif" font-size="3.8" fill="rgba(255,255,255,.8)" text-anchor="middle">SUC NATURAL</text>
+          <path d="M35 52Q38 49 38 106" stroke="rgba(255,255,255,.28)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <h3>Suc de Aronia</h3>
+        <p>Presat la rece, păstrează toți antioxidanții. Ideal în smoothie-uri.</p>
+        <span class="ptag">500 ml</span>
+      </div>
+
+      <!-- SIROP -->
+      <div class="pcard rv d1">
+        <svg class="p-svg" viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sirop de Aronia">
+          <defs>
+            <linearGradient id="sy1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8b2d5a"/><stop offset="100%" stop-color="#4d0e2d"/></linearGradient>
+            <linearGradient id="sy2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a0a1e" stop-opacity=".9"/><stop offset="100%" stop-color="#210610"/></linearGradient>
+            <linearGradient id="syl" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8a050"/><stop offset="100%" stop-color="#8a6020"/></linearGradient>
+          </defs>
+          <path d="M18 62Q16 68 16 84L16 108Q16 122 32 122L78 122Q94 122 94 108L94 84Q94 68 92 62Z" fill="url(#sy1)"/>
+          <path d="M26 48Q16 56 18 62L92 62Q94 56 84 48Z" fill="#7a2250"/>
+          <rect x="33" y="35" width="44" height="16" rx="5" fill="#6b1a44"/>
+          <ellipse cx="55" cy="35" rx="26" ry="8" fill="url(#syl)"/>
+          <ellipse cx="55" cy="32" rx="24" ry="6" fill="#d4aa60"/>
+          <ellipse cx="55" cy="30" rx="20" ry="4" fill="#e0bc70"/>
+          <path d="M17 80Q55 74 93 80L93 108Q93 120 78 120L32 120Q17 120 17 108Z" fill="url(#sy2)"/>
+          <path d="M24 66Q27 62 27 112" stroke="rgba(255,255,255,.2)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <rect x="22" y="82" width="66" height="32" rx="5" fill="rgba(255,255,255,.13)" stroke="rgba(255,255,255,.18)" stroke-width=".8"/>
+          <text x="55" y="95" font-family="Georgia,serif" font-size="6.5" fill="white" text-anchor="middle" font-weight="bold">ARONIA</text>
+          <text x="55" y="105" font-family="Arial,sans-serif" font-size="4" fill="rgba(255,255,255,.8)" text-anchor="middle">SIROP NATURAL</text>
+          <path d="M72 122Q73 127 72 130" stroke="#c9973c" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <ellipse cx="71.5" cy="131" rx="2" ry="2.5" fill="#c9973c" opacity=".7"/>
+        </svg>
+        <h3>Sirop de Aronia</h3>
+        <p>Îndulcit natural, perfect pentru limonade, ceaiuri sau deserturi.</p>
+        <span class="ptag">350 ml</span>
+      </div>
+
+      <!-- DULCEATA -->
+      <div class="pcard rv d2">
+        <svg class="p-svg" viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dulceată de Aronia">
+          <defs>
+            <linearGradient id="j1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7a2250"/><stop offset="100%" stop-color="#3d0a22"/></linearGradient>
+            <linearGradient id="j2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5c1234" stop-opacity=".95"/><stop offset="100%" stop-color="#280610"/></linearGradient>
+            <pattern id="ging" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e8b8cc"/><rect width="4" height="4" fill="#d4637a" opacity=".5"/><rect x="4" y="4" width="4" height="4" fill="#d4637a" opacity=".5"/></pattern>
+          </defs>
+          <path d="M14 60Q12 66 12 82L12 106Q12 122 30 122L80 122Q98 122 98 106L98 82Q98 66 96 60Z" fill="url(#j1)"/>
+          <path d="M22 46Q12 54 14 60L96 60Q98 54 88 46Z" fill="#6b1a44"/>
+          <rect x="30" y="35" width="50" height="14" rx="4" fill="#5c1234"/>
+          <ellipse cx="55" cy="35" rx="28" ry="8" fill="url(#ging)"/>
+          <ellipse cx="55" cy="32" rx="26" ry="7" fill="url(#ging)"/>
+          <ellipse cx="55" cy="36" rx="28" ry="4" fill="none" stroke="#a0185a" stroke-width="2.5"/>
+          <circle cx="55" cy="26" r="5" fill="#c44d84" opacity=".8"/>
+          <path d="M13 78Q55 72 97 78L97 106Q97 120 80 120L30 120Q13 120 13 106Z" fill="url(#j2)"/>
+          <circle cx="32" cy="92" r="6" fill="#2d0618"/><circle cx="32" cy="92" r="2" fill="rgba(255,255,255,.15)"/>
+          <circle cx="50" cy="88" r="5.5" fill="#3a0a1e"/><circle cx="63" cy="94" r="5" fill="#2d0618"/>
+          <circle cx="78" cy="89" r="5.5" fill="#3a0a1e"/><circle cx="42" cy="103" r="4.5" fill="#2d0618"/>
+          <path d="M20 64Q23 60 23 112" stroke="rgba(255,255,255,.16)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <rect x="16" y="80" width="78" height="18" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.16)" stroke-width=".6"/>
+          <text x="55" y="89" font-family="Georgia,serif" font-size="6" fill="white" text-anchor="middle" font-weight="bold">ARONIA</text>
+          <text x="55" y="97" font-family="Arial,sans-serif" font-size="3.8" fill="rgba(255,255,255,.75)" text-anchor="middle">DULCEAȚĂ • fără zahăr</text>
+        </svg>
+        <h3>Dulceață de Aronia</h3>
+        <p>Fără zahăr adăugat — doar fructe și îndulcitor natural.</p>
+        <span class="ptag">300 g</span>
+      </div>
+
+      <!-- PUDRA -->
+      <div class="pcard rv d3">
+        <svg class="p-svg" viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pudră de Aronia">
+          <defs>
+            <linearGradient id="pw1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9b3068"/><stop offset="50%" stop-color="#6b1a44"/><stop offset="100%" stop-color="#3d0a22"/></linearGradient>
+            <linearGradient id="pw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b870a0"/><stop offset="100%" stop-color="#8b3060"/></linearGradient>
+          </defs>
+          <path d="M25 34Q22 40 22 52L20 104Q20 118 36 118L74 118Q90 118 90 104L88 52Q88 40 85 34Z" fill="url(#pw1)"/>
+          <path d="M25 34L85 34Q88 26 86 20L24 20Q22 26 25 34Z" fill="#3d0a22"/>
+          <path d="M27 36L83 36" stroke="#c44d84" stroke-width="3" stroke-linecap="round"/>
+          <path d="M27 40L83 40" stroke="#a03060" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M46 17L50 12L54 17" fill="#2a0616" stroke="#5c1234" stroke-width="1"/>
+          <path d="M33 56Q33 50 40 50L70 50Q77 50 77 56L77 88Q77 94 70 94L40 94Q33 94 33 88Z" fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+          <path d="M34 80Q55 73 76 80L76 88Q76 92 70 92L40 92Q34 92 34 88Z" fill="url(#pw2)" opacity=".8"/>
+          <circle cx="42" cy="82" r="2" fill="rgba(107,26,68,.5)"/><circle cx="52" cy="79" r="2.5" fill="rgba(107,26,68,.45)"/>
+          <circle cx="62" cy="83" r="2" fill="rgba(107,26,68,.5)"/><circle cx="57" cy="86" r="1.8" fill="rgba(107,26,68,.45)"/>
+          <text x="55" y="61" font-family="Georgia,serif" font-size="7" fill="white" text-anchor="middle" font-weight="bold">ARONIA</text>
+          <text x="55" y="70" font-family="Arial,sans-serif" font-size="4" fill="rgba(255,255,255,.75)" text-anchor="middle">PUDRĂ LIOFILIZATĂ</text>
+          <path d="M28 44Q31 40 31 100" stroke="rgba(255,255,255,.13)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <rect x="22" y="106" width="66" height="10" rx="3" fill="rgba(0,0,0,.25)"/>
+          <text x="55" y="114" font-family="Arial,sans-serif" font-size="4" fill="rgba(255,255,255,.7)" text-anchor="middle">200 g • 100% NATURAL</text>
+        </svg>
+        <h3>Pudră de Aronia</h3>
+        <p>Fructe liofilizate, măcinate fin. Se adaugă în iaurt sau shake-uri.</p>
+        <span class="ptag">200 g</span>
+      </div>
+
+      <!-- VIN -->
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 110 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vin de Aronia">
+          <defs>
+            <linearGradient id="w1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1e0a14"/><stop offset="100%" stop-color="#0e0408"/></linearGradient>
+            <linearGradient id="w2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5c1234" stop-opacity=".9"/><stop offset="100%" stop-color="#3a0818"/></linearGradient>
+            <linearGradient id="wf" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4a3880"/><stop offset="50%" stop-color="#6a50a8"/><stop offset="100%" stop-color="#3a2860"/></linearGradient>
+          </defs>
+          <path d="M40 62Q32 70 30 86L28 120Q28 132 44 132L66 132Q82 132 82 120L80 86Q78 70 70 62Z" fill="url(#w1)"/>
+          <path d="M40 62Q38 50 38 40L72 40Q72 50 70 62Z" fill="#180810"/>
+          <rect x="43" y="16" width="24" height="26" rx="5" fill="#140608"/>
+          <rect x="40" y="10" width="30" height="14" rx="4" fill="url(#wf)"/>
+          <rect x="41" y="11" width="28" height="12" rx="3" fill="#5a48a0"/>
+          <path d="M43 14L67 14" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
+          <ellipse cx="55" cy="10" rx="10" ry="4" fill="#d4b87a"/>
+          <ellipse cx="55" cy="8" rx="8" ry="3" fill="#e0c890"/>
+          <path d="M29 90Q55 84 81 90L81 120Q81 130 66 130L44 130Q29 130 29 120Z" fill="url(#w2)"/>
+          <rect x="33" y="92" width="44" height="34" rx="4" fill="#fdf6f0"/>
+          <rect x="35" y="94" width="40" height="30" rx="3" fill="#f5ede0"/>
+          <rect x="36" y="95" width="38" height="28" rx="2" fill="none" stroke="#c9973c" stroke-width=".8"/>
+          <path d="M44 105Q48 102 52 105Q56 108 60 105Q64 102 68 105" stroke="#6b4020" stroke-width="1" fill="none"/>
+          <circle cx="46" cy="107" r="2" fill="#6b1a44"/><circle cx="52" cy="104" r="2" fill="#6b1a44"/>
+          <circle cx="58" cy="107" r="2" fill="#6b1a44"/><circle cx="64" cy="104" r="2" fill="#6b1a44"/>
+          <text x="55" y="100" font-family="Georgia,serif" font-size="5" fill="#3b1050" text-anchor="middle" font-weight="bold">ARONIA</text>
+          <text x="55" y="118" font-family="Georgia,serif" font-size="4" fill="#6b3020" text-anchor="middle" font-style="italic">Vin Natural</text>
+          <text x="55" y="122" font-family="Arial,sans-serif" font-size="3" fill="#9a7a5a" text-anchor="middle">750 ml · 11% vol</text>
+          <path d="M36 68Q39 64 39 118" stroke="rgba(255,255,255,.11)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <h3>Vin de Aronia</h3>
+        <p>Fermentat natural, aromă bogată și taninuri fine. Un vin aparte.</p>
+        <span class="ptag">750 ml</span>
+      </div>
+
+      <!-- CAPSULE -->
+      <div class="pcard rv d1">
+        <svg class="p-svg" viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Capsule cu Aronia">
+          <defs>
+            <linearGradient id="p1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8ecf8"/><stop offset="100%" stop-color="#c8d0e8"/></linearGradient>
+            <linearGradient id="p2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f0f2fc"/><stop offset="100%" stop-color="#d8ddf0"/></linearGradient>
+          </defs>
+          <rect x="28" y="50" width="54" height="68" rx="12" fill="url(#p1)"/>
+          <rect x="33" y="38" width="44" height="16" rx="7" fill="#d8ddf0"/>
+          <rect x="29" y="22" width="52" height="20" rx="9" fill="url(#p2)"/>
+          <rect x="31" y="24" width="48" height="16" rx="8" fill="#f5f6ff"/>
+          <line x1="38" y1="25" x2="38" y2="39" stroke="#d0d4ee" stroke-width="1.5"/>
+          <line x1="45" y1="25" x2="45" y2="39" stroke="#d0d4ee" stroke-width="1.5"/>
+          <line x1="52" y1="25" x2="52" y2="39" stroke="#d0d4ee" stroke-width="1.5"/>
+          <line x1="59" y1="25" x2="59" y2="39" stroke="#d0d4ee" stroke-width="1.5"/>
+          <line x1="66" y1="25" x2="66" y2="39" stroke="#d0d4ee" stroke-width="1.5"/>
+          <rect x="31" y="60" width="48" height="50" rx="5" fill="rgba(255,255,255,.9)"/>
+          <circle cx="55" cy="75" r="9" fill="#6b1a44"/>
+          <rect x="53" y="70" width="4" height="10" rx="1.5" fill="white"/>
+          <rect x="50" y="73" width="10" height="4" rx="1.5" fill="white"/>
+          <text x="55" y="90" font-family="Georgia,serif" font-size="6" fill="#2a1a3a" text-anchor="middle" font-weight="bold">ARONIA</text>
+          <text x="55" y="97" font-family="Arial,sans-serif" font-size="3.5" fill="#6b5580" text-anchor="middle">EXTRACT 500mg</text>
+          <text x="55" y="104" font-family="Arial,sans-serif" font-size="3" fill="#8a7898" text-anchor="middle">60 CAPSULE VEGETALE</text>
+          <!-- Floating capsules -->
+          <g transform="rotate(-30,22,88)"><rect x="14" y="84" width="16" height="8" rx="4" fill="#8b3060"/><rect x="14" y="84" width="8" height="8" rx="4" fill="#c44d84"/></g>
+          <g transform="rotate(20,86,75)"><rect x="80" y="71" width="16" height="8" rx="4" fill="#8b3060"/><rect x="80" y="71" width="8" height="8" rx="4" fill="#c44d84"/></g>
+          <path d="M35 54Q37 51 37 110" stroke="rgba(255,255,255,.32)" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <h3>Capsule cu Aronia</h3>
+        <p>Extract concentrat pentru aport zilnic rapid de antioxidanți.</p>
+        <span class="ptag">60 capsule</span>
+      </div>
+
+      <!-- CEAI -->
+      <div class="pcard rv d2">
+        <svg class="p-svg" viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ceai din Aronia">
+          <defs>
+            <linearGradient id="t1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#5c1234"/><stop offset="100%" stop-color="#2d0616"/></linearGradient>
+            <linearGradient id="tl" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fdf6f0"/><stop offset="100%" stop-color="#ede0d0"/></linearGradient>
+            <linearGradient id="td" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c87840"/><stop offset="100%" stop-color="#8a4820"/></linearGradient>
+          </defs>
+          <rect x="14" y="28" width="82" height="88" rx="7" fill="url(#t1)"/>
+          <path d="M14 34L96 34L96 28Q96 21 89 21L21 21Q14 21 14 28Z" fill="#3d0a22"/>
+          <rect x="18" y="38" width="74" height="73" rx="5" fill="url(#tl)"/>
+          <rect x="21" y="41" width="68" height="67" rx="4" fill="none" stroke="#c9973c" stroke-width="1"/>
+          <!-- steam -->
+          <path d="M38 26Q35 20 38 15Q41 10 38 6" stroke="rgba(255,255,255,.3)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M55 25Q52 19 55 14Q58 9 55 5" stroke="rgba(255,255,255,.25)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <path d="M72 26Q69 20 72 15Q75 10 72 6" stroke="rgba(255,255,255,.3)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          <!-- cup -->
+          <path d="M34 80Q34 88 55 88Q76 88 76 80L74 68Q74 63 68 63L42 63Q36 63 36 68Z" fill="white" stroke="#e8d0b8" stroke-width=".8"/>
+          <path d="M36 72Q55 78 74 72L74 80Q74 87 55 87Q36 87 36 80Z" fill="url(#td)" opacity=".85"/>
+          <path d="M74 67Q84 67 84 75Q84 83 74 83" stroke="#e8d0b8" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <ellipse cx="55" cy="88" rx="24" ry="5" fill="#ede0d0"/>
+          <circle cx="38" cy="87" r="3.5" fill="#5c1234"/>
+          <circle cx="72" cy="87" r="3.5" fill="#5c1234"/>
+          <text x="55" y="58" font-family="Georgia,serif" font-size="6.5" fill="#3b1050" text-anchor="middle" font-weight="bold">ARONIA</text>
+          <text x="55" y="100" font-family="Arial,sans-serif" font-size="3.8" fill="#6b4a30" text-anchor="middle">CEAI DIN FRUCTE</text>
+          <text x="55" y="107" font-family="Arial,sans-serif" font-size="3.2" fill="#9a7a5a" text-anchor="middle">150 g · 60 plicuri</text>
+        </svg>
+        <h3>Ceai din Aronia</h3>
+        <p>Fructe uscate întregi, infuzii calde pline de savoare și beneficii.</p>
+        <span class="ptag">150 g</span>
+      </div>
+
+      <!-- ULEI -->
+      <div class="pcard rv d3">
+        <svg class="p-svg" viewBox="0 0 110 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ulei din Semințe de Aronia">
+          <defs>
+            <linearGradient id="o1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8d8b8"/><stop offset="100%" stop-color="#c8b090"/></linearGradient>
+            <linearGradient id="o2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8c050"/><stop offset="100%" stop-color="#b08020"/></linearGradient>
+            <linearGradient id="o3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8b870"/><stop offset="100%" stop-color="#a08040"/></linearGradient>
+          </defs>
+          <path d="M38 54Q31 61 31 74L31 108Q31 122 44 122L66 122Q79 122 79 108L79 74Q79 61 72 54Z" fill="url(#o1)"/>
+          <path d="M38 54Q37 44 38 37L72 37Q73 44 72 54Z" fill="#d8c8a0"/>
+          <rect x="42" y="20" width="26" height="19" rx="5" fill="#f0e8d0"/>
+          <path d="M43 16Q43 8 55 8Q67 8 67 16L65 20L45 20Z" fill="url(#o3)"/>
+          <ellipse cx="55" cy="16" rx="14" ry="5" fill="#c8a060"/>
+          <ellipse cx="55" cy="14" rx="11" ry="3.5" fill="#d8b470"/>
+          <rect x="53" y="4" width="4" height="8" rx="2" fill="#b89050"/>
+          <path d="M53 2Q55 0 57 2Q57 5 55 6Q53 5 53 2Z" fill="#e8c060" opacity=".8"/>
+          <path d="M32 78Q55 72 78 78L78 108Q78 120 66 120L44 120Q32 120 32 108Z" fill="url(#o2)" opacity=".88"/>
+          <path d="M38 58Q40 54 40 116" stroke="rgba(255,255,255,.26)" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <rect x="34" y="80" width="42" height="34" rx="5" fill="rgba(255,255,255,.88)"/>
+          <rect x="36" y="82" width="38" height="30" rx="4" fill="#fdf6f0"/>
+          <path d="M46 90Q55 84 64 90Q55 96 46 90Z" fill="#4a8a2a"/>
+          <line x1="55" y1="90" x2="55" y2="98" stroke="#4a8a2a" stroke-width="1.2"/>
+          <text x="55" y="103" font-family="Georgia,serif" font-size="5.5" fill="#3b2010" text-anchor="middle" font-weight="bold">ARONIA</text>
+          <text x="55" y="109" font-family="Arial,sans-serif" font-size="3.2" fill="#7a6040" text-anchor="middle">ULEI DIN SEMINȚE</text>
+          <path d="M20 84Q20 78 23 76Q26 78 26 84Q26 89 23 90Q20 89 20 84Z" fill="#e8c060" opacity=".6"/>
+          <path d="M84 96Q84 90 87 88Q90 90 90 96Q90 101 87 102Q84 101 84 96Z" fill="#e8c060" opacity=".6"/>
+        </svg>
+        <h3>Ulei din Semințe</h3>
+        <p>Presat la rece, bogat în acizi grași esențiali. Excelent pentru piele.</p>
+        <span class="ptag">100 ml</span>
+      </div>
+
+    </div><!-- /prod-grid -->
+  </div>
 </section>
 
-<!-- ══════ NUTRIȚIE ══════ -->
-<section class="nutrition-section" id="nutritie">
-    <div class="wrapper">
-        <div class="nutrition-layout">
-            <div class="reveal">
-                <div class="section-eyebrow">Date Clinice</div>
-                <h2 class="section-title">Profil<br><em>Nutrițional</em></h2>
-                <p class="section-desc">Valori medii per 100 g de fructe proaspete de aronia, conform analizelor de laborator.</p>
-                <div class="nutrition-highlight-cards">
-                    <div class="nh-card">
-                        <div class="nh-icon">🔵</div>
-                        <div>
-                            <div class="nh-val">1.480 mg</div>
-                            <div class="nh-name">Antocianine / 100g — Recordul naturii</div>
-                        </div>
-                    </div>
-                    <div class="nh-card">
-                        <div class="nh-icon">🟡</div>
-                        <div>
-                            <div class="nh-val">2.560 mg</div>
-                            <div class="nh-name">Polifenoli totali / 100g</div>
-                        </div>
-                    </div>
-                    <div class="nh-card">
-                        <div class="nh-icon">🟢</div>
-                        <div>
-                            <div class="nh-val">5.3 g</div>
-                            <div class="nh-name">Fibre alimentare — 21% DZR</div>
-                        </div>
-                    </div>
-                    <div class="nh-card">
-                        <div class="nh-icon">🟠</div>
-                        <div>
-                            <div class="nh-val">47 kcal</div>
-                            <div class="nh-name">Calorii — Produs cu densitate nutrițională ridicată</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="reveal reveal-delay-2">
-                <div class="nutrition-table-wrap">
-                    <table class="nutrition-table">
-                        <thead>
-                            <tr>
-                                <th>Nutrient</th>
-                                <th>Valoare / 100g</th>
-                                <th>% DZR</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Calorii</td><td>47 kcal</td><td>—</td></tr>
-                            <tr><td>Carbohidrați</td><td>9.6 g</td><td>3%</td></tr>
-                            <tr><td>Fibre</td><td class="hl">5.3 g</td><td class="hl">21%</td></tr>
-                            <tr><td>Proteine</td><td>1.4 g</td><td>3%</td></tr>
-                            <tr><td>Vitamina C</td><td class="hl">21 mg</td><td class="hl">35%</td></tr>
-                            <tr><td>Vitamina K</td><td class="hl">29.3 µg</td><td class="hl">37%</td></tr>
-                            <tr><td>Vitamina E</td><td>1.2 mg</td><td>8%</td></tr>
-                            <tr><td>Folat (B9)</td><td>24 µg</td><td>6%</td></tr>
-                            <tr><td>Mangan</td><td class="hl">0.6 mg</td><td class="hl">30%</td></tr>
-                            <tr><td>Potasiu</td><td>162 mg</td><td>4%</td></tr>
-                            <tr><td>Antocianine</td><td class="hl">1.480 mg</td><td class="star-rating">★★★★★</td></tr>
-                            <tr><td>Polifenoli totali</td><td class="hl">2.560 mg</td><td class="star-rating">★★★★★</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p style="font-size:0.78rem; color:rgba(255,255,255,0.35); margin-top:1rem; padding:0 0.5rem;">
-                    *DZR = Doza Zilnică Recomandată (adult). ★★★★★ = Valoare excepțional de ridicată, fără echivalent comparabil în rândul fructelor comune.
-                </p>
-            </div>
+<!-- ══════════════════════════════
+     NUTRITIE
+══════════════════════════════ -->
+<section class="nut-sec" id="nutritie">
+  <div class="wrap">
+    <div class="nut-lay">
+      <div class="rv">
+        <div class="eyebrow">Date Clinice</div>
+        <h2 class="sec-title">Profil<br><em>Nutrițional</em></h2>
+        <p class="sec-desc">Valori medii per 100 g de fructe proaspete de aronia, conform analizelor de laborator.</p>
+        <div class="nh-list">
+          <div class="nhc"><div class="nhc-icon">🔵</div><div><div class="nhc-val">1.480 mg</div><div class="nhc-name">Antocianine / 100g — Recordul naturii</div></div></div>
+          <div class="nhc"><div class="nhc-icon">🟡</div><div><div class="nhc-val">2.560 mg</div><div class="nhc-name">Polifenoli totali / 100g</div></div></div>
+          <div class="nhc"><div class="nhc-icon">🟢</div><div><div class="nhc-val">5.3 g</div><div class="nhc-name">Fibre alimentare — 21% DZR</div></div></div>
+          <div class="nhc"><div class="nhc-icon">🟠</div><div><div class="nhc-val">47 kcal</div><div class="nhc-name">Densitate nutrițională ridicată</div></div></div>
         </div>
+      </div>
+      <div class="rv d2">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Nutrient</th><th>Valoare / 100g</th><th>% DZR</th></tr></thead>
+            <tbody>
+              <tr><td>Calorii</td><td>47 kcal</td><td>—</td></tr>
+              <tr><td>Carbohidrați</td><td>9.6 g</td><td>3%</td></tr>
+              <tr><td>Fibre</td><td class="hl">5.3 g</td><td class="hl">21%</td></tr>
+              <tr><td>Proteine</td><td>1.4 g</td><td>3%</td></tr>
+              <tr><td>Vitamina C</td><td class="hl">21 mg</td><td class="hl">35%</td></tr>
+              <tr><td>Vitamina K</td><td class="hl">29.3 µg</td><td class="hl">37%</td></tr>
+              <tr><td>Vitamina E</td><td>1.2 mg</td><td>8%</td></tr>
+              <tr><td>Folat (B9)</td><td>24 µg</td><td>6%</td></tr>
+              <tr><td>Mangan</td><td class="hl">0.6 mg</td><td class="hl">30%</td></tr>
+              <tr><td>Potasiu</td><td>162 mg</td><td>4%</td></tr>
+              <tr><td>Antocianine</td><td class="hl">1.480 mg</td><td class="stars">★★★★★</td></tr>
+              <tr><td>Polifenoli totali</td><td class="hl">2.560 mg</td><td class="stars">★★★★★</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:.76rem;color:rgba(255,255,255,.3);margin-top:.9rem;padding:0 .4rem">*DZR = Doza Zilnică Recomandată. ★★★★★ = Valoare excepțional de ridicată.</p>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ══════ CONTACT ══════ -->
-<section class="contact-section" id="contact">
-    <div class="wrapper">
-        <div class="contact-inner reveal">
-            <div class="section-eyebrow">Rămâi Conectat</div>
-            <h2 class="section-title">Vrei să comenzi<br>sau să colaborezi?</h2>
-            <p class="section-desc" style="margin-top:1rem;">
-                Contactează-ne pentru comenzi, parteneriate sau orice întrebare despre produsele noastre naturale din aronia.
-            </p>
-            <div class="contact-cards">
-                <div class="c-card"><span class="icon">📧</span> frantescu1993@gmail.com</div>
-                <div class="c-card"><span class="icon">📞</span> +40 735 477 765</div>
-                <div class="c-card"><span class="icon">📍</span> Fardea, jud. Timiș, România</div>
-            </div>
-            <a href="mailto:frantescu1993@gmail.com" class="btn btn-contact">✉️ &nbsp;Trimite-ne un Mesaj</a>
-        </div>
+<!-- ══════════════════════════════
+     CONTACT
+══════════════════════════════ -->
+<section class="con-sec" id="contact">
+  <div class="wrap">
+    <div class="con-inner rv">
+      <div class="eyebrow">Rămâi Conectat</div>
+      <h2 class="sec-title">Vrei să comenzi<br>sau să colaborezi?</h2>
+      <p class="sec-desc" style="margin-top:.8rem">Contactează-ne pentru comenzi, parteneriate sau orice întrebare despre produsele noastre naturale.</p>
+      <div class="con-cards">
+        <div class="ccard"><span>📧</span>frantescu1993@gmail.com</div>
+        <div class="ccard"><span>📞</span>+40 735 477 765</div>
+        <div class="ccard"><span>📍</span>Fardea, jud. Timiș, România</div>
+      </div>
+      <a href="mailto:frantescu1993@gmail.com" class="btn btn-w">✉️ &nbsp;Trimite-ne un Mesaj</a>
     </div>
+  </div>
 </section>
 
-<!-- ══════ FOOTER ══════ -->
 <footer>
-    <p>© 2026 <a href="#">Aronia Natur</a> — Toate drepturile rezervate &nbsp;·&nbsp; Creat cu dragoste pentru sănătate naturală</p>
+  <p>© 2026 <a href="#">Aronia Natur</a> — Toate drepturile rezervate · Creat cu dragoste pentru sănătate naturală</p>
 </footer>
 
-<!-- Scroll to top -->
-<button id="scrollTop" title="Înapoi sus">↑</button>
+<button id="stb" aria-label="Înapoi sus">↑</button>
 
+<!-- ══════════════════════════════
+     SCRIPTS — deferred, non-blocking
+══════════════════════════════ -->
 <script>
-    // Nav scroll & hamburger
-    const navbar = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
+'use strict';
+/* ─── MICRO PARTICLE CANVAS (lightweight, throttled to 30fps) ─── */
+(function(){
+  const c=document.getElementById('bgc');
+  if(!c)return;
+  const ctx=c.getContext('2d',{alpha:true,willReadFrequently:false});
+  let W=0,H=0,raf=null,last=0;
+  const FPS=30,INTERVAL=1000/FPS;
+  const BERRY_COUNT=28,LEAF_COUNT=10;
+  const berries=[],leaves=[];
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        navLinks.classList.toggle('open');
+  function resize(){
+    W=c.width=c.offsetWidth||window.innerWidth;
+    H=c.height=c.offsetHeight||window.innerHeight;
+  }
+
+  function mkB(){return{x:Math.random()*W,y:H+Math.random()*150,r:2+Math.random()*7,vx:(Math.random()-.5)*.3,vy:-(0.12+Math.random()*.42),a:.04+Math.random()*.1,h:290+Math.random()*55,p:Math.random()*Math.PI*2,life:0,max:220+Math.random()*320}}
+  function mkL(){return{x:Math.random()*W,y:-20,sz:6+Math.random()*13,rot:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.022,vx:(Math.random()-.5)*.6,vy:.22+Math.random()*.5,a:.03+Math.random()*.06,life:0,max:(H+50)/.35}}
+
+  function init(){
+    resize();
+    for(let i=0;i<BERRY_COUNT;i++){const b=mkB();b.y=Math.random()*H;b.life=Math.random()*b.max;berries.push(b);}
+    for(let i=0;i<LEAF_COUNT;i++){const l=mkL();l.y=Math.random()*H;l.life=Math.random()*l.max;leaves.push(l);}
+  }
+
+  function drawBerry(b){
+    const f=Math.sin(Math.PI*b.life/b.max);
+    ctx.save();ctx.globalAlpha=b.a*f;
+    const g=ctx.createRadialGradient(b.x-b.r*.3,b.y-b.r*.3,b.r*.05,b.x,b.y,b.r);
+    g.addColorStop(0,`hsl(${b.h},55%,50%)`);g.addColorStop(1,`hsl(${b.h-16},65%,20%)`);
+    ctx.fillStyle=g;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,6.283);ctx.fill();
+    ctx.fillStyle='rgba(255,255,255,.22)';ctx.beginPath();ctx.arc(b.x-b.r*.28,b.y-b.r*.28,b.r*.3,0,6.283);ctx.fill();
+    ctx.restore();
+  }
+
+  function drawLeaf(l){
+    const f=Math.sin(Math.PI*Math.min(l.life/25,1))*Math.sin(Math.PI*Math.min((l.max-l.life)/25,1));
+    ctx.save();ctx.globalAlpha=l.a*f;ctx.translate(l.x,l.y);ctx.rotate(l.rot);
+    ctx.fillStyle=`hsl(${100+Math.random()*20},50%,28%)`;
+    ctx.beginPath();ctx.moveTo(0,-l.sz);ctx.bezierCurveTo(l.sz*.52,-l.sz*.35,l.sz*.52,l.sz*.35,0,l.sz);ctx.bezierCurveTo(-l.sz*.52,l.sz*.35,-l.sz*.52,-l.sz*.35,0,-l.sz);ctx.fill();
+    ctx.restore();
+  }
+
+  let fr=0;
+  function loop(now){
+    raf=requestAnimationFrame(loop);
+    if(now-last<INTERVAL)return;
+    last=now;fr++;
+    ctx.clearRect(0,0,W,H);
+    berries.forEach((b,i)=>{
+      b.x+=b.vx+Math.sin(b.p+fr*.009)*.2;b.y+=b.vy;b.life++;
+      if(b.life>b.max||b.y<-15)berries[i]=mkB();
+      drawBerry(b);
     });
-    navLinks.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            navLinks.classList.remove('open');
-        });
+    leaves.forEach((l,i)=>{
+      l.x+=l.vx+Math.sin(fr*.01+l.rot)*.35;l.y+=l.vy;l.rot+=l.rv;l.life++;
+      if(l.y>H+35||l.life>l.max)leaves[i]=mkL();
+      drawLeaf(l);
     });
+  }
 
-    // Scroll effects
-    const scrollTopBtn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        navbar.classList.toggle('scrolled', y > 50);
-        scrollTopBtn.classList.toggle('visible', y > 500);
+  const ro=new ResizeObserver(()=>{resize()});
+  ro.observe(document.documentElement);
+  init();
+  raf=requestAnimationFrame(loop);
 
-        // Active link
-        const sections = document.querySelectorAll('section[id], header[id]');
-        let current = '';
-        sections.forEach(s => {
-            if (window.scrollY >= s.offsetTop - 160) current = s.id;
-        });
-        document.querySelectorAll('.nav-links a').forEach(a => {
-            a.style.color = '';
-            if (a.getAttribute('href') === '#' + current && !a.classList.contains('nav-cta')) {
-                a.style.color = 'var(--berry)';
-            }
-        });
-    }, { passive: true });
+  // Pause when hidden (saves CPU/battery)
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){cancelAnimationFrame(raf);raf=null;}
+    else if(!raf){last=0;raf=requestAnimationFrame(loop);}
+  });
 
-    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  // Respect reduced motion
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){cancelAnimationFrame(raf);ctx.clearRect(0,0,W,H);}
+})();
 
-    // Reveal on scroll
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+/* ─── NAVBAR ─── */
+const nav=document.getElementById('nav');
+const burger=document.getElementById('burger');
+const navList=document.getElementById('navList');
+
+burger.addEventListener('click',()=>{
+  const open=burger.classList.toggle('on');
+  navList.classList.toggle('on',open);
+  burger.setAttribute('aria-expanded',open);
+},{passive:true});
+
+navList.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  burger.classList.remove('on');navList.classList.remove('on');burger.setAttribute('aria-expanded','false');
+},{passive:true}));
+
+/* ─── SCROLL EFFECTS (passive, throttled) ─── */
+const stb=document.getElementById('stb');
+let ticking=false;
+
+function onScroll(){
+  if(ticking)return;
+  ticking=true;
+  requestAnimationFrame(()=>{
+    const y=window.scrollY;
+    nav.classList.toggle('on',y>50);
+    stb.classList.toggle('on',y>500);
+    // Active nav link
+    const secs=[...document.querySelectorAll('section[id],header[id]')];
+    let cur='';
+    secs.forEach(s=>{if(y>=s.offsetTop-170)cur=s.id;});
+    document.querySelectorAll('.nav-list a').forEach(a=>{
+      const active=a.getAttribute('href')==='#'+cur&&!a.classList.contains('nav-cta');
+      a.classList.toggle('active',active);
+    });
+    ticking=false;
+  });
+}
+
+window.addEventListener('scroll',onScroll,{passive:true});
+
+stb.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ─── REVEAL ON SCROLL (IntersectionObserver) ─── */
+const rvObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}
+  });
+},{threshold:.07,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 </script>
 </body>
 </html>
