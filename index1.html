@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Aronia Natur — superaliment natural cu cei mai mulți antioxidanți. Produse 100% naturale din România.">
+<meta name="theme-color" content="#6b1a44">
+<title>Aronia Natur — Superalimentul Naturii</title>
+
+<!-- Preload critical fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,700&family=DM+Sans:wght@300;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════
+   MODERN DESIGN SYSTEM — Mobile-First
+═══════════════════════════════════════════ */
+:root{
+  --ink:#1a0e26;--plum:#3b1050;--berry:#6b1a44;--rose:#a63360;
+  --blush:#d4637a;--gold:#c9973c;--cream:#faf5ef;--white:#fff;
+  --text:#2a1a2e;--muted:#7a6580;
+  --glass:rgba(255,255,255,.7);--glass-dark:rgba(26,14,38,.85);
+  --ease:cubic-bezier(.16,1,.3,1);--bounce:cubic-bezier(.34,1.56,.64,1);
+  --sh:0 8px 32px rgba(26,14,38,.08),0 1px 0 rgba(255,255,255,.8) inset;
+  --shh:0 20px 60px rgba(107,26,68,.15);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'DM Sans',system-ui,sans-serif;
+  background:#faf5ef;color:var(--text);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  line-height:1.7;position:relative;
+}
+
+/* ═══════════════════════════════════════════
+   ANIMATED GRADIENT BACKGROUND
+═══════════════════════════════════════════ */
+.bg-animated{
+  position:fixed;inset:0;z-index:-2;overflow:hidden;
+  background:linear-gradient(135deg,#faf5ef 0%,#f4e8f0 50%,#ede5f5 100%);
+}
+.bg-animated::before{
+  content:'';position:absolute;inset:-50%;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(107,26,68,.15),transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(201,151,60,.12),transparent 40%),
+    radial-gradient(circle at 50% 50%,rgba(166,51,96,.08),transparent 50%);
+  animation:bgFloat 20s ease-in-out infinite;
+}
+@keyframes bgFloat{0%,100%{transform:translate(0,0) rotate(0deg)}25%{transform:translate(-5%,5%) rotate(1deg)}50%{transform:translate(5%,-5%) rotate(-1deg)}75%{transform:translate(-3%,-3%) rotate(.5deg)}}
+
+/* Floating particles SVG */
+.bg-particles{
+  position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4;
+}
+
+/* Grain texture */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.15;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+}
+
+/* ═══════════════════════════════════════════
+   GLASSMORPHISM NAVIGATION — Mobile Optimized
+═══════════════════════════════════════════ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:1rem 1.25rem;
+  transition:all .4s var(--ease);
+}
+.nav.on{
+  background:var(--glass);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(107,26,68,.08);
+  box-shadow:0 2px 24px rgba(26,14,38,.06);
+}
+.nav-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;
+}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.logo-icon{
+  width:38px;height:38px;
+  background:linear-gradient(135deg,var(--berry),var(--plum));
+  border-radius:12px;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;box-shadow:0 4px 16px rgba(107,26,68,.35);
+  transition:transform .3s var(--bounce);
+}
+.logo:hover .logo-icon{transform:rotate(-8deg) scale(1.08)}
+.logo-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;color:var(--ink);letter-spacing:-.4px;
+}
+.logo-text em{font-style:italic;color:var(--berry)}
+
+/* Mobile Menu */
+.nav-menu{
+  position:fixed;top:0;right:-100%;
+  width:min(300px,85vw);height:100vh;
+  background:var(--glass);
+  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
+  box-shadow:-8px 0 40px rgba(26,14,38,.12);
+  padding:5rem 2rem 2rem;
+  transition:right .4s var(--ease);
+  z-index:999;overflow-y:auto;
+}
+.nav-menu.open{right:0}
+.nav-menu a{
+  display:block;padding:.9rem 1.2rem;margin:.3rem 0;
+  font-size:.95rem;font-weight:600;color:var(--text);
+  border-radius:12px;transition:all .3s var(--ease);
+}
+.nav-menu a:hover,.nav-menu a.active{
+  background:rgba(107,26,68,.08);color:var(--berry);
+  transform:translateX(6px);
+}
+.nav-cta{
+  background:var(--berry)!important;color:#fff!important;
+  box-shadow:0 4px 16px rgba(107,26,68,.3)!important;
+  margin-top:1rem!important;
+}
+.nav-cta:hover{
+  background:var(--plum)!important;
+  transform:translateX(0) translateY(-2px)!important;
+}
+
+/* Burger Icon */
+.burger{
+  display:flex;flex-direction:column;gap:5px;
+  width:28px;height:24px;cursor:pointer;z-index:1001;
+  padding:0;background:none;border:none;
+}
+.burger span{
+  width:100%;height:2.5px;background:var(--ink);
+  border-radius:2px;transition:all .3s var(--ease);
+  transform-origin:center;
+}
+.burger.open span:nth-child(1){transform:rotate(45deg) translateY(7.5px)}
+.burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translateY(-7.5px)}
+
+/* Menu Overlay */
+.menu-overlay{
+  position:fixed;inset:0;
+  background:rgba(26,14,38,.4);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s var(--ease);z-index:998;
+}
+.menu-overlay.open{opacity:1;pointer-events:all}
+
+/* ═══════════════════════════════════════════
+   HERO — Mobile-First with Parallax
+═══════════════════════════════════════════ */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:6rem 1.25rem 3rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero-content{max-width:600px;position:relative;z-index:2}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(107,26,68,.08);
+  border:1px solid rgba(107,26,68,.15);
+  padding:.5rem 1rem;border-radius:50px;
+  font-size:.8rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--berry);margin-bottom:1.5rem;
+  animation:fadeInUp .8s var(--ease) .2s both;
+}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.5rem,8vw,4.5rem);
+  font-weight:700;color:var(--ink);
+  line-height:1.08;letter-spacing:-1.2px;
+  margin-bottom:1.2rem;
+  animation:fadeInUp .8s var(--ease) .4s both;
+}
+.hero h1 .hi{
+  background:linear-gradient(135deg,var(--berry),var(--rose));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;font-style:italic;
+}
+.hero-sub{
+  font-size:1rem;color:var(--muted);
+  line-height:1.8;max-width:500px;
+  margin:0 auto 2rem;font-weight:400;
+  animation:fadeInUp .8s var(--ease) .6s both;
+}
+.hero-btns{
+  display:flex;gap:.8rem;justify-content:center;
+  flex-wrap:wrap;margin-bottom:2.5rem;
+  animation:fadeInUp .8s var(--ease) .8s both;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:.85rem 1.8rem;border-radius:50px;
+  font-weight:600;font-size:.9rem;
+  border:none;cursor:pointer;text-decoration:none;
+  transition:all .3s var(--ease);
+  box-shadow:0 4px 16px rgba(0,0,0,.1);
+}
+.btn-p{background:var(--berry);color:#fff}
+.btn-p:hover{background:var(--plum);transform:translateY(-3px);box-shadow:0 8px 24px rgba(107,26,68,.4)}
+.btn-g{background:#fff;color:var(--berry);border:2px solid rgba(107,26,68,.2)}
+.btn-g:hover{background:rgba(107,26,68,.05);border-color:var(--berry);transform:translateY(-2px)}
+
+/* Floating Berry Visual */
+.hero-visual{
+  position:relative;width:min(420px,90vw);
+  aspect-ratio:1;margin:3rem auto 0;
+  animation:fadeInUp .8s var(--ease) 1s both;
+}
+.float-orb{
+  width:100%;height:100%;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,rgba(166,51,96,.15),rgba(107,26,68,.08) 50%,transparent 75%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  animation:pulse 8s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.float-orb::before{
+  content:'';position:absolute;inset:8%;
+  border-radius:50%;border:1px solid rgba(107,26,68,.08);
+  animation:spin 25s linear infinite;
+}
+.float-orb::after{
+  content:'';position:absolute;inset:20%;
+  border-radius:50%;border:1px dashed rgba(201,151,60,.1);
+  animation:spin 35s linear infinite reverse;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.berry-emoji{
+  font-size:clamp(5rem,20vw,8rem);
+  animation:float 6s ease-in-out infinite;
+  filter:drop-shadow(0 20px 40px rgba(107,26,68,.25));
+  position:relative;z-index:1;
+}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-15px) rotate(2deg)}}
+
+/* Floating Badges */
+.float-badges{
+  position:absolute;inset:0;pointer-events:none;
+}
+.fbadge{
+  position:absolute;
+  background:var(--glass);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.8);
+  padding:.6rem .95rem;border-radius:10px;
+  font-size:.75rem;font-weight:600;
+  box-shadow:var(--sh);
+  animation:badgeFloat 4s ease-in-out infinite;
+}
+.fbadge:nth-child(1){top:10%;left:0;animation-delay:0s}
+.fbadge:nth-child(2){top:50%;right:-5%;animation-delay:1.3s}
+.fbadge:nth-child(3){bottom:15%;left:5%;animation-delay:2.6s}
+@keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ═══════════════════════════════════════════
+   COMMON SECTIONS — Glass Cards
+═══════════════════════════════════════════ */
+.wrap{max-width:1280px;margin:0 auto;padding:4rem 1.25rem}
+.sec-head{text-align:center;margin-bottom:3rem}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.75rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.8rem;
+}
+.eyebrow::before{content:'';width:24px;height:2px;background:var(--gold)}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,6vw,3.2rem);
+  font-weight:700;color:var(--ink);
+  line-height:1.1;letter-spacing:-.8px;
+}
+.sec-title em{color:var(--berry);font-style:italic}
+.sec-desc{
+  color:var(--muted);font-size:.95rem;
+  line-height:1.8;max-width:500px;
+  margin:.7rem auto 0;font-weight:400;
+}
+
+/* Glass Card Component */
+.glass-card{
+  background:var(--glass);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:20px;padding:2rem 1.5rem;
+  box-shadow:var(--sh);
+  transition:all .4s var(--ease);
+}
+.glass-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shh);
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT — Two Column on Desktop
+═══════════════════════════════════════════ */
+.about-sec{background:transparent}
+.about-grid{
+  display:grid;grid-template-columns:1fr;
+  gap:2rem;align-items:center;
+}
+.about-img{
+  background:linear-gradient(145deg,#ead5e4,#f5e8f0);
+  border-radius:20px;aspect-ratio:1;
+  display:flex;align-items:center;justify-content:center;
+  font-size:6rem;position:relative;
+  box-shadow:20px 20px 50px rgba(107,26,68,.1),-6px -6px 24px rgba(255,255,255,.7);
+  animation:fadeInUp .8s var(--ease) both;
+}
+.about-tag{
+  position:absolute;bottom:-15px;right:-15px;
+  background:var(--berry);color:#fff;
+  padding:.9rem 1.2rem;border-radius:12px;
+  box-shadow:0 8px 24px rgba(107,26,68,.35);
+}
+.about-tag strong{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:700;display:block;line-height:1;
+}
+.about-tag small{font-size:.7rem;opacity:.85;letter-spacing:.5px}
+.about-text{animation:fadeInUp .8s var(--ease) .2s both}
+.about-text p{
+  color:var(--muted);line-height:1.9;
+  margin-bottom:.9rem;font-weight:400;font-size:.95rem;
+}
+.callout{
+  background:linear-gradient(135deg,rgba(107,26,68,.06),rgba(201,151,60,.06));
+  border-left:3px solid var(--berry);
+  border-radius:0 12px 12px 0;
+  padding:1rem 1.3rem;margin:1.3rem 0;
+  font-size:.9rem;line-height:1.7;
+}
+.callout strong{color:var(--berry)}
+
+/* ═══════════════════════════════════════════
+   BENEFITS — Masonry Grid on Mobile
+═══════════════════════════════════════════ */
+.ben-sec{background:transparent}
+.ben-grid{
+  display:grid;grid-template-columns:1fr;gap:1.2rem;
+}
+.bcard{
+  background:var(--glass);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:16px;padding:1.6rem 1.4rem;
+  box-shadow:var(--sh);position:relative;overflow:hidden;
+  transition:all .4s var(--ease);
+  animation:fadeInUp .6s var(--ease) both;
+}
+.bcard:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:var(--shh);
+}
+.bcard::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--berry),var(--rose));
+  opacity:0;transition:opacity .3s;
+}
+.bcard:hover::before{opacity:1}
+.bcard.feat{
+  background:linear-gradient(135deg,var(--berry),var(--plum));
+  color:#fff;
+}
+.bcard.feat h3,.bcard.feat p{color:#fff}
+.bcard.feat p{opacity:.9}
+.bicon{
+  width:48px;height:48px;
+  background:rgba(107,26,68,.08);
+  border-radius:12px;display:flex;
+  align-items:center;justify-content:center;
+  font-size:1.5rem;margin-bottom:1rem;
+  transition:transform .3s var(--bounce);
+}
+.bcard:hover .bicon{transform:scale(1.15) rotate(-8deg)}
+.bcard.feat .bicon{background:rgba(255,255,255,.15);font-size:1.8rem}
+.bcard h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.15rem;font-weight:700;
+  margin-bottom:.4rem;letter-spacing:-.2px;
+}
+.bcard p{font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:400}
+
+/* ═══════════════════════════════════════════
+   PRODUCTS — Compact Grid
+═══════════════════════════════════════════ */
+.prod-sec{background:transparent}
+.prod-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:1rem;
+}
+.pcard{
+  background:var(--glass);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:16px;padding:1.4rem 1rem;
+  text-align:center;cursor:pointer;
+  transition:all .4s var(--ease);
+  box-shadow:var(--sh);
+  animation:fadeInUp .6s var(--ease) both;
+}
+.pcard:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:var(--shh);
+}
+.p-svg{
+  width:90px;height:90px;margin:0 auto .9rem;
+  filter:drop-shadow(0 6px 18px rgba(107,26,68,.15));
+  transition:transform .4s var(--bounce);
+}
+.pcard:hover .p-svg{transform:scale(1.12) rotate(-5deg)}
+.pcard h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-weight:700;
+  margin-bottom:.3rem;letter-spacing:-.1px;
+}
+.pcard p{
+  font-size:.75rem;color:var(--muted);
+  line-height:1.6;margin-bottom:.7rem;font-weight:400;
+}
+.ptag{
+  display:inline-block;
+  background:var(--berry);color:#fff;
+  font-size:.7rem;font-weight:600;
+  padding:.25rem .7rem;border-radius:50px;
+}
+
+/* ═══════════════════════════════════════════
+   NUTRITION — Compact Table
+═══════════════════════════════════════════ */
+.nut-sec{
+  background:var(--glass-dark);
+  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
+  color:#fff;
+}
+.nut-sec .eyebrow{color:var(--gold)}
+.nut-sec .eyebrow::before{background:var(--gold)}
+.nut-sec .sec-title{color:#fff}
+.nut-sec .sec-desc{color:rgba(255,255,255,.6)}
+.nh-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:.8rem;margin:2rem 0;
+}
+.nhc{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;padding:.9rem 1rem;
+  text-align:center;
+  transition:all .3s var(--ease);
+}
+.nhc:hover{
+  background:rgba(255,255,255,.12);
+  transform:translateY(-3px);
+}
+.nhc-val{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.nhc-name{
+  font-size:.7rem;color:rgba(255,255,255,.5);
+  margin-top:.3rem;line-height:1.4;
+}
+.tbl-wrap{
+  overflow-x:auto;border-radius:16px;
+  border:1px solid rgba(255,255,255,.1);
+  margin-top:2rem;
+}
+table{width:100%;border-collapse:collapse;min-width:300px}
+thead{background:rgba(201,151,60,.15)}
+th{
+  padding:.8rem 1rem;text-align:left;
+  font-size:.7rem;font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;
+  color:var(--gold);
+}
+td{
+  padding:.8rem 1rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  font-size:.8rem;color:rgba(255,255,255,.7);
+}
+tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:rgba(255,255,255,.05)}
+.hl{color:var(--gold)!important;font-weight:600}
+.stars{color:var(--gold)}
+
+/* ═══════════════════════════════════════════
+   CONTACT — CTA Section
+═══════════════════════════════════════════ */
+.con-sec{
+  background:linear-gradient(135deg,var(--berry),var(--plum));
+  color:#fff;text-align:center;position:relative;overflow:hidden;
+}
+.con-sec::before{
+  content:'';position:absolute;
+  top:-50%;right:-20%;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);
+  border-radius:50%;animation:pulse 10s ease-in-out infinite;
+}
+.con-inner{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.con-inner .eyebrow{color:var(--gold);justify-content:center}
+.con-inner .eyebrow::before{background:var(--gold)}
+.con-inner .sec-title{color:#fff}
+.con-inner .sec-desc{color:rgba(255,255,255,.8);margin:1rem auto}
+.con-cards{
+  display:flex;flex-direction:column;gap:.8rem;
+  margin:2rem 0;
+}
+.ccard{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:12px;padding:.9rem 1.2rem;
+  font-size:.85rem;font-weight:500;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:all .3s var(--ease);
+}
+.ccard:hover{
+  background:rgba(255,255,255,.18);
+  transform:translateY(-3px);
+}
+.btn-w{
+  background:#fff;color:var(--berry);
+  box-shadow:0 8px 24px rgba(0,0,0,.15);
+  font-weight:700;
+}
+.btn-w:hover{
+  background:var(--cream);
+  transform:translateY(-4px);
+  box-shadow:0 12px 32px rgba(0,0,0,.2);
+}
+
+footer{
+  background:var(--ink);color:rgba(255,255,255,.4);
+  text-align:center;padding:1.5rem 1rem;font-size:.8rem;
+}
+footer a{color:var(--blush)}
+
+/* ═══════════════════════════════════════════
+   SCROLL TO TOP BUTTON
+═══════════════════════════════════════════ */
+#stb{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--berry);color:#fff;
+  border:none;font-size:1.2rem;cursor:pointer;
+  box-shadow:0 6px 20px rgba(107,26,68,.4);
+  opacity:0;pointer-events:none;
+  transform:translateY(10px) scale(.9);
+  transition:all .3s var(--ease);z-index:900;
+  display:flex;align-items:center;justify-content:center;
+}
+#stb.on{opacity:1;pointer-events:all;transform:translateY(0) scale(1)}
+#stb:hover{background:var(--plum);transform:translateY(-3px) scale(1.05)}
+
+/* ═══════════════════════════════════════════
+   REVEAL ANIMATIONS — Scroll
+═══════════════════════════════════════════ */
+.rv{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease);
+}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv:nth-child(1){transition-delay:.1s}
+.rv:nth-child(2){transition-delay:.2s}
+.rv:nth-child(3){transition-delay:.3s}
+.rv:nth-child(4){transition-delay:.4s}
+.rv:nth-child(5){transition-delay:.5s}
+.rv:nth-child(6){transition-delay:.6s}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET & DESKTOP
+═══════════════════════════════════════════ */
+@media(min-width:640px){
+  .prod-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+  .nh-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(min-width:768px){
+  .wrap{padding:5rem 2rem}
+  .nav{padding:1rem 2rem}
+  .nav-inner{height:64px}
+  .burger{display:none}
+  .nav-menu{
+    position:static;width:auto;height:auto;
+    background:transparent;backdrop-filter:none;
+    box-shadow:none;padding:0;
+    display:flex;flex-direction:row;
+    align-items:center;gap:.3rem;
+  }
+  .nav-menu a{
+    display:inline-flex;padding:.5rem 1rem;
+    margin:0;font-size:.88rem;
+  }
+  .nav-menu a:hover{transform:translateX(0)}
+  .nav-cta{margin-top:0!important}
+  .about-grid{grid-template-columns:1fr 1fr;gap:3rem}
+  .about-img{font-size:7.5rem}
+  .ben-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}
+  .bcard.feat{grid-column:span 2}
+  .prod-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(min-width:1024px){
+  .ben-grid{grid-template-columns:repeat(3,1fr)}
+  .bcard.feat{grid-column:span 3}
+}
+
+/* Reduced Motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+
+/* Print Styles */
+@media print{
+  .nav,.burger,.menu-overlay,.hero-visual,#stb,.float-badges{display:none!important}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     ANIMATED BACKGROUND LAYERS
+══════════════════════════════════════════ -->
+<div class="bg-animated"></div>
+<svg class="bg-particles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="b1" cx="30%" cy="30%">
+      <stop offset="0%" stop-color="#c44d84" stop-opacity=".12"/>
+      <stop offset="100%" stop-color="#6b1a44" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g opacity=".3">
+    <circle cx="200" cy="150" r="80" fill="url(#b1)">
+      <animate attributeName="cy" values="150;180;150" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1200" cy="700" r="100" fill="url(#b1)">
+      <animate attributeName="cx" values="1200;1180;1200" dur="10s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="600" cy="400" r="60" fill="#c9973c" opacity=".08">
+      <animate attributeName="r" values="60;75;60" dur="7s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-icon" aria-hidden="true">🫐</div>
+      <span class="logo-text">Aronia <em>Natur</em></span>
+    </div>
+    <div class="nav-menu" id="navMenu">
+      <a href="#despre">Despre</a>
+      <a href="#beneficii">Beneficii</a>
+      <a href="#produse">Produse</a>
+      <a href="#nutritie">Nutriție</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Meniu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🌟 Superaliment Natural</div>
+    <h1>Natura în forma<br>sa cea mai <span class="hi">pură</span></h1>
+    <p class="hero-sub">Aronia — fructul cu cel mai ridicat conținut de antioxidanți din lume. Un dar al naturii pentru imunitate, vitalitate și sănătate.</p>
+    <div class="hero-btns">
+      <a href="#beneficii" class="btn btn-p">🔬 Vezi Beneficiile</a>
+      <a href="#produse" class="btn btn-g">🛒 Produse Naturale</a>
+    </div>
+    <div class="hero-visual">
+      <div class="float-orb">
+        <div class="berry-emoji">🫐</div>
+        <div class="float-badges">
+          <div class="fbadge">🛡️ Imunitate</div>
+          <div class="fbadge">❤️ Inimă sănătoasă</div>
+          <div class="fbadge">✨ Piele tânără</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     DESPRE
+══════════════════════════════════════════ -->
+<section class="about-sec" id="despre">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">🌿 Cunoaște</div>
+      <h2 class="sec-title">Ce este <em>Aronia</em>?</h2>
+      <p class="sec-desc">Un superaliment cu proprietăți extraordinare</p>
+    </div>
+    <div class="about-grid">
+      <div style="position:relative">
+        <div class="about-img">🫐</div>
+        <div class="about-tag"><strong>10×</strong><small>vs. Merișoare</small></div>
+      </div>
+      <div class="about-text">
+        <p>Cunoscută și sub numele de <strong>scoruș negru</strong> (<em>Aronia melanocarpa</em>), este recunoscută global pentru profilul nutrițional excepțional. România se numără printre țările cu cele mai bune condiții de cultură.</p>
+        <div class="callout">💡 <strong>Știai?</strong> Aronia conține de <strong>3× mai mulți antioxidanți</strong> decât afinele și de <strong>10× mai mulți</strong> decât merișoarele — confirmat de studii clinice.</div>
+        <p>Consumată proaspătă sau procesată sub formă de sucuri, siropuri sau capsule, se integrează ușor în orice stil de viață sănătos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     BENEFICII
+══════════════════════════════════════════ -->
+<section class="ben-sec" id="beneficii">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">💪 Sănătate</div>
+      <h2 class="sec-title">Beneficiile<br><em>Aroniei</em></h2>
+      <p class="sec-desc">Motivul pentru care aronia este numită „comoara neagră" a naturii</p>
+    </div>
+    <div class="ben-grid">
+      <div class="bcard feat rv">
+        <div class="bicon">🛡️</div>
+        <div><h3>Imunitate de Fier</h3><p>Vitamina C, zinc și polifenoli oferă un scut natural puternic împotriva infecțiilor virale și bacteriene.</p></div>
+      </div>
+      <div class="bcard rv"><div class="bicon">❤️</div><h3>Sănătatea Inimii</h3><p>Reduce tensiunea, scade LDL-ul și îmbunătățește circulația.</p></div>
+      <div class="bcard rv"><div class="bicon">🧠</div><h3>Claritate Mentală</h3><p>Protejează neuronii, sprijinind memoria și concentrarea.</p></div>
+      <div class="bcard rv"><div class="bicon">🩸</div><h3>Glicemie Stabilă</h3><p>Recomandată persoanelor cu diabet — nivel optim de zahăr în sânge.</p></div>
+      <div class="bcard rv"><div class="bicon">✨</div><h3>Piele Tânără</h3><p>Antocianine combat radicalii liberi, încetinind îmbătrânirea.</p></div>
+      <div class="bcard rv"><div class="bicon">👁️</div><h3>Vedere Clară</h3><p>Protejează retina și reduce degenerescența maculară.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PRODUSE
+══════════════════════════════════════════ -->
+<section class="prod-sec" id="produse">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">🛍️ Gama Noastră</div>
+      <h2 class="sec-title">Produse din<br><em>Aronia</em></h2>
+      <p class="sec-desc">100% naturale, fără aditivi artificiali</p>
+    </div>
+    <div class="prod-grid">
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="s1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#9b2d5c"/><stop offset="100%" stop-color="#4a0f2a"/></linearGradient></defs>
+          <path d="M30 35Q25 40 23 50L22 80Q22 90 35 90L65 90Q78 90 78 80L77 50Q75 40 70 35Z" fill="url(#s1)"/>
+          <rect x="35" y="20" width="30" height="17" rx="6" fill="#7a1f48"/>
+          <rect x="32" y="10" width="36" height="13" rx="6" fill="#2d6a1f"/>
+          <path d="M23 60Q50 55 77 60L77 80Q77 88 65 88L35 88Q23 88 23 80Z" fill="#3a0a1e" opacity=".8"/>
+          <text x="50" y="65" font-size="7" fill="white" text-anchor="middle" font-weight="bold">ARONIA</text>
+        </svg>
+        <h3>Suc de Aronia</h3>
+        <p>Presat la rece</p>
+        <span class="ptag">500 ml</span>
+      </div>
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 50Q13 55 13 65L13 82Q13 92 25 92L75 92Q87 92 87 82L87 65Q87 55 85 50Z" fill="#8b2d5a"/>
+          <ellipse cx="50" cy="30" rx="24" ry="7" fill="#d4aa60"/>
+          <path d="M14 68Q50 63 86 68L86 82Q86 90 75 90L25 90Q14 90 14 82Z" fill="#210610"/>
+          <text x="50" y="75" font-size="7" fill="white" text-anchor="middle" font-weight="bold">SIROP</text>
+        </svg>
+        <h3>Sirop de Aronia</h3>
+        <p>Îndulcit natural</p>
+        <span class="ptag">350 ml</span>
+      </div>
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 48Q8 53 8 63L8 80Q8 92 22 92L78 92Q92 92 92 80L92 63Q92 53 90 48Z" fill="#7a2250"/>
+          <ellipse cx="50" cy="28" rx="26" ry="7" fill="#e8b8cc"/>
+          <circle cx="30" cy="70" r="5" fill="#2d0618"/><circle cx="50" cy="67" r="5" fill="#3a0a1e"/><circle cx="70" cy="72" r="5" fill="#2d0618"/>
+          <text x="50" y="67" font-size="6" fill="white" text-anchor="middle" font-weight="bold">DULCEAȚĂ</text>
+        </svg>
+        <h3>Dulceață</h3>
+        <p>Fără zahăr</p>
+        <span class="ptag">300 g</span>
+      </div>
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 30Q18 35 18 45L16 85Q16 95 30 95L70 95Q84 95 84 85L82 45Q82 35 80 30Z" fill="#9b3068"/>
+          <path d="M28 40Q28 35 33 35L67 35Q72 35 72 40L72 70Q72 75 67 75L33 75Q28 75 28 70Z" fill="rgba(255,255,255,.08)"/>
+          <path d="M29 63Q50 58 71 63L71 70Q71 74 67 74L33 74Q29 74 29 70Z" fill="#b870a0" opacity=".8"/>
+          <text x="50" y="50" font-size="7" fill="white" text-anchor="middle" font-weight="bold">PUDRĂ</text>
+        </svg>
+        <h3>Pudră Liofilizată</h3>
+        <p>Măcinată fin</p>
+        <span class="ptag">200 g</span>
+      </div>
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 50Q27 55 25 65L23 88Q23 96 37 96L63 96Q77 96 77 88L75 65Q73 55 68 50Z" fill="#1e0a14"/>
+          <rect x="38" y="15" width="24" height="36" rx="5" fill="#140608"/>
+          <rect x="35" y="8" width="30" height="12" rx="4" fill="#5a48a0"/>
+          <ellipse cx="50" cy="8" rx="9" ry="3" fill="#d4b87a"/>
+          <rect x="30" y="68" width="40" height="24" rx="4" fill="#fdf6f0"/>
+          <text x="50" y="78" font-size="5" fill="#3b1050" text-anchor="middle" font-weight="bold">VIN</text>
+        </svg>
+        <h3>Vin de Aronia</h3>
+        <p>Fermentat natural</p>
+        <span class="ptag">750 ml</span>
+      </div>
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="25" y="40" width="50" height="52" rx="11" fill="#e8ecf8"/>
+          <rect x="26" y="60" width="48" height="28" rx="5" fill="white"/>
+          <circle cx="50" cy="70" r="7" fill="#6b1a44"/>
+          <text x="50" y="85" font-size="5" fill="#2a1a3a" text-anchor="middle" font-weight="bold">CAPSULE</text>
+        </svg>
+        <h3>Capsule</h3>
+        <p>Extract 500mg</p>
+        <span class="ptag">60 caps</span>
+      </div>
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="25" width="76" height="70" rx="6" fill="#5c1234"/>
+          <rect x="16" y="32" width="68" height="58" rx="5" fill="#fdf6f0"/>
+          <path d="M28 65Q28 72 50 72Q72 72 72 65L70 55Q70 52 65 52L35 52Q30 52 30 55Z" fill="white" stroke="#e8d0b8"/>
+          <path d="M30 60Q50 65 70 60L70 65Q70 71 50 71Q30 71 30 65Z" fill="#c87840" opacity=".8"/>
+          <text x="50" y="48" font-size="6" fill="#3b1050" text-anchor="middle" font-weight="bold">CEAI</text>
+        </svg>
+        <h3>Ceai din Aronia</h3>
+        <p>Fructe uscate</p>
+        <span class="ptag">150 g</span>
+      </div>
+      <div class="pcard rv">
+        <svg class="p-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 45Q27 50 27 60L27 85Q27 95 38 95L62 95Q73 95 73 85L73 60Q73 50 68 45Z" fill="#e8d8b8"/>
+          <rect x="37" y="18" width="26" height="28" rx="5" fill="#f0e8d0"/>
+          <path d="M38 14Q38 7 50 7Q62 7 62 14L60 18L40 18Z" fill="#c8a060"/>
+          <rect x="50" y="3" width="4" height="8" rx="2" fill="#b89050"/>
+          <path d="M28 68Q50 63 72 68L72 85Q72 93 62 93L38 93Q28 93 28 85Z" fill="#e8c050" opacity=".85"/>
+          <rect x="30" y="68" width="40" height="22" rx="5" fill="white"/>
+          <text x="50" y="80" font-size="5" fill="#3b2010" text-anchor="middle" font-weight="bold">ULEI</text>
+        </svg>
+        <h3>Ulei din Semințe</h3>
+        <p>Presat la rece</p>
+        <span class="ptag">100 ml</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     NUTRITIE
+══════════════════════════════════════════ -->
+<section class="nut-sec" id="nutritie">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">📊 Date Clinice</div>
+      <h2 class="sec-title">Profil<br><em>Nutrițional</em></h2>
+      <p class="sec-desc">Valori per 100 g fructe proaspete</p>
+    </div>
+    <div class="nh-grid">
+      <div class="nhc"><div class="nhc-val">1480 mg</div><div class="nhc-name">Antocianine</div></div>
+      <div class="nhc"><div class="nhc-val">2560 mg</div><div class="nhc-name">Polifenoli</div></div>
+      <div class="nhc"><div class="nhc-val">5.3 g</div><div class="nhc-name">Fibre</div></div>
+      <div class="nhc"><div class="nhc-val">47 kcal</div><div class="nhc-name">Calorii</div></div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Nutrient</th><th>Valoare</th><th>% DZR</th></tr></thead>
+        <tbody>
+          <tr><td>Carbohidrați</td><td>9.6 g</td><td>3%</td></tr>
+          <tr><td>Fibre</td><td class="hl">5.3 g</td><td class="hl">21%</td></tr>
+          <tr><td>Vitamina C</td><td class="hl">21 mg</td><td class="hl">35%</td></tr>
+          <tr><td>Vitamina K</td><td class="hl">29.3 µg</td><td class="hl">37%</td></tr>
+          <tr><td>Mangan</td><td class="hl">0.6 mg</td><td class="hl">30%</td></tr>
+          <tr><td>Antocianine</td><td class="hl">1480 mg</td><td class="stars">★★★★★</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.7rem;color:rgba(255,255,255,.4);text-align:center;margin-top:1rem">*DZR = Doza Zilnică Recomandată</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section class="con-sec" id="contact">
+  <div class="wrap">
+    <div class="con-inner">
+      <div class="eyebrow">📬 Rămâi Conectat</div>
+      <h2 class="sec-title">Vrei să comenzi<br>sau să colaborezi?</h2>
+      <p class="sec-desc">Contactează-ne pentru comenzi, parteneriate sau informații</p>
+      <div class="con-cards">
+        <div class="ccard">📧 frantescu1993@gmail.com</div>
+        <div class="ccard">📞 +40 735 477 765</div>
+        <div class="ccard">📍 Fardea, jud. Timiș, România</div>
+      </div>
+      <a href="mailto:frantescu1993@gmail.com" class="btn btn-w">✉️ Trimite-ne un Mesaj</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 <a href="#">Aronia Natur</a> — Toate drepturile rezervate</p>
+</footer>
+
+<button id="stb" aria-label="Înapoi sus">↑</button>
+
+<!-- ══════════════════════════════════════════
+     OPTIMIZED JAVASCRIPT — Passive Events
+══════════════════════════════════════════ -->
+<script>
+'use strict';
+/* ─── MOBILE MENU ─── */
+const burger=document.getElementById('burger');
+const navMenu=document.getElementById('navMenu');
+const menuOverlay=document.getElementById('menuOverlay');
+
+function toggleMenu(){
+  const open=burger.classList.toggle('open');
+  navMenu.classList.toggle('open',open);
+  menuOverlay.classList.toggle('open',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+
+burger.addEventListener('click',toggleMenu,{passive:true});
+menuOverlay.addEventListener('click',toggleMenu,{passive:true});
+
+navMenu.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    burger.classList.remove('open');
+    navMenu.classList.remove('open');
+    menuOverlay.classList.remove('open');
+    document.body.style.overflow='';
+  },{passive:true});
+});
+
+/* ─── SCROLL EFFECTS (throttled with RAF) ─── */
+const nav=document.getElementById('nav');
+const stb=document.getElementById('stb');
+let ticking=false;
+
+function onScroll(){
+  if(ticking)return;
+  ticking=true;
+  requestAnimationFrame(()=>{
+    const y=window.scrollY;
+    nav.classList.toggle('on',y>50);
+    stb.classList.toggle('on',y>400);
+    ticking=false;
+  });
+}
+
+window.addEventListener('scroll',onScroll,{passive:true});
+stb.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ─── REVEAL ON SCROLL (IntersectionObserver) ─── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ─── PRELOAD NEXT SECTION IMAGES (on idle) ─── */
+if('requestIdleCallback'in window){
+  requestIdleCallback(()=>{
+    document.querySelectorAll('.p-svg').forEach(svg=>{
+      svg.style.willChange='transform';
+    });
+  });
+}
+
+/* ─── TOUCH OPTIMIZATION ─── */
+if('ontouchstart'in window){
+  document.body.classList.add('touch');
+}
+</script>
+</body>
+</html>
